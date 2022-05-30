@@ -1,4 +1,6 @@
-﻿namespace FastMarket.Models
+﻿using System.Collections.Generic;
+
+namespace FastMarket.Models
 {
     public class Cart
     {
@@ -6,5 +8,8 @@
         public int UserId { get; set; }
         public decimal totalPrice { get; set; }
         public int count { get; set; }
+
+        public List<CartProduct>  cartProducts{ get; set; }
+
     }
 }
