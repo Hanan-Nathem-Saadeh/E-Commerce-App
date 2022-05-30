@@ -19,41 +19,43 @@ namespace FastMarket.Controllers
             
             return View();
         }
-        public IActionResult pruductsDetails(int id , string name ,string description ,int Amount ,decimal price)
-        {
-            Product product = new Product { Id = id, Name = name, Amount = Amount, Description = description, Price = price };
-            return View(product);
-        }
-
-        public IActionResult CategoryDetails(int id, string name, string details)
-        {
-
-            Categories categories = new Categories { Id = id ,Name = name , Details = details };
 
 
+        //public IActionResult pruductsDetails(int id , string name ,string description ,int Amount ,decimal price)
+        //{
+        //    Product product = new Product { Id = id, Name = name, Amount = Amount, Description = description, Price = price };
+        //    return View(product);
+        //}
 
-            return View(categories);
-        }
-        public IActionResult CategoryList()
-        {
-            List<Categories> listCategories = new List<Categories>();
-            listCategories.Add( new Categories { Id = 1, Name = "c1", Details = "c1 Details" });
+        //public IActionResult CategoryDetails(int id, string name, string details)
+        //{
 
-
-            return View();
-        }
-        public IActionResult pruductsList()
-        {
-          List<Product> listProducts = new List<Product>();
+        //    Categories categories = new Categories { Id = id ,Name = name , Details = details };
 
 
-        //    listProducts.Add(new Product { Id = 1, Name = "Product1", Amount = 30, Description = "Description1", Price = 100 });
-        //    listProducts.Add(new Product { Id = 2, Name = "Product2", Amount = 40, Description = "Description2", Price = 350 });
-        //    listProducts.Add(new Product { Id = 3, Name = "Product3", Amount = 50, Description = "Description3", Price = 200 });
-        //    listProducts.Add(new Product { Id = 4, Name = "Product4", Amount = 60, Description = "Description4", Price = 230 });
-        //    listProducts.Add(new Product { Id = 5, Name = "Product5", Amount = 70, Description = "Description5", Price = 105 });
-            return View(listProducts);
-        }
+
+        //    return View(categories);
+        //}
+        //public IActionResult CategoryList()
+        //{
+        //    List<Categories> listCategories = new List<Categories>();
+        //    listCategories.Add( new Categories { Id = 1, Name = "c1", Details = "c1 Details" });
+
+
+        //    return View();
+        //}
+        //public IActionResult pruductsList()
+        //{
+        //  List<Product> listProducts = new List<Product>();
+
+
+        ////    listProducts.Add(new Product { Id = 1, Name = "Product1", Amount = 30, Description = "Description1", Price = 100 });
+        ////    listProducts.Add(new Product { Id = 2, Name = "Product2", Amount = 40, Description = "Description2", Price = 350 });
+        ////    listProducts.Add(new Product { Id = 3, Name = "Product3", Amount = 50, Description = "Description3", Price = 200 });
+        ////    listProducts.Add(new Product { Id = 4, Name = "Product4", Amount = 60, Description = "Description4", Price = 230 });
+        ////    listProducts.Add(new Product { Id = 5, Name = "Product5", Amount = 70, Description = "Description5", Price = 105 });
+        //    return View(listProducts);
+        //}
 
     }
 }

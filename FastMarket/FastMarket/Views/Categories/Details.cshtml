@@ -1,5 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model FastMarket.Models.Categories
+
+
+    <h1>Name : @Model.Name </h1>
+    <br />
+    <h1>Details : @Model.Details </h1>
+    <br />
+    @foreach (var item in Model.categoriesProducts)
+   {
+       <h3>Name : @item.Product.Name</h3>
+       <h3> Description : @item.Product.Description</h3>
+       <h3> Price : @item.Product.Price</h3>
+       <hr style="height:2px;width:400px;border-width:1;">
+   }
+    <hr />
+    
