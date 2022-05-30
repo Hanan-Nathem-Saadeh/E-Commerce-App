@@ -18,12 +18,14 @@ namespace FastMarket.Controllers
 
         public async  Task<IActionResult> Index()
         {
-            return View();
+            var ListCart = await _cart.GetCarts();
+            return View(ListCart);
         }
 
-        public async Task<IActionResult> Details()
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var cart = _cart.GetCart(id);
+            return View(cart);
         }
     }
 }

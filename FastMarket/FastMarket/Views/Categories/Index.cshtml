@@ -2,6 +2,21 @@
 
 @foreach (var item in Model)
 {
-    <h1>@item.Name </h1>
+    <h1>Name : @item.Name </h1>
+    <br />
+    <h1>Details : @item.Details </h1>
+    <br />
+    
+    @foreach (var items in item.categoriesProducts)
+   {
+       <h3>Name : @items.Product.Name</h3>
+       <h3> Description : @items.Product.Description</h3>
+       <h3> Price : @items.Product.Price</h3>
+       <hr style="height:2px;width:400px;border-width:1;">
+   }
+
+
+    <hr />
+
 }
 

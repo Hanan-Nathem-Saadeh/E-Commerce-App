@@ -1,1 +1,11 @@
-﻿
+﻿@model IEnumerable<FastMarket.Models.Cart>
+
+
+
+@foreach (var cart in Model)
+{
+    <h1>User Id : @cart.UserId</h1>
+    <h1>Total Price : @cart.totalPrice</h1>
+    <h1>Count : @cart.count</h1>
+    
+}
