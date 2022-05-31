@@ -27,6 +27,8 @@ namespace FastMarket.Controllers
         {
             var category = await _Categories.GetCategory(id);
 
+            ViewBag.Title = id;
+
             return View(category);
         }
     }

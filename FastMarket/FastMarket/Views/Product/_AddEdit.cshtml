@@ -1,0 +1,19 @@
+﻿@model FastMarket.Models.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<label>
+    Name :
+    <input asp-for="@Model.Name" />
+</label>
+<label>
+    Price :
+    <input asp-for="@Model.Price" />
+</label>
+<label>
+    Description :
+    <input asp-for="@Model.Description" />
+</label>
+<label>
+    Amount :
+    <input asp-for="@Model.Amount" />
+</label>

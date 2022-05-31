@@ -1,0 +1,18 @@
+﻿@model FastMarket.Models.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!-- var x ;
+if(ViewBag.meth == "add"){
+<h2>hello form add page </h2>
+x = "AddProduct";
+}else{
+<h1> hello in update page </h1>
+x = "Update";
+}}-->
+
+<form asp-controller="Product" asp-action="AddProduct" method="post">
+
+    <partial name="_AddEdit"></partial>
+    <button type="submit">update product</button>
+</form>
+<div asp-validation-summary="All"></div>

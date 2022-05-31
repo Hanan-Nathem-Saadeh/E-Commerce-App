@@ -28,5 +28,65 @@ namespace FastMarket.Controllers
 
             return View(product);
         }
+
+
+
+        public async Task<IActionResult> Update(int id)
+        {
+            Product product = await _Product.GetProduct(id);
+
+            return View("AddEditProduct", product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(Product product)
+        {
+
+            if (ModelState.IsValid)
+            {
+                await _Product.UpdateProduct(product.Id,product);
+                return Content("Update done");
+            }
+            else
+            {
+
+                return View("AddEditProduct", product);
+            }
+        }
+
+
+        public  IActionResult addproductView ()
+        {
+           // ViewBag.meth = "add";
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(Product product)
+        {
+
+            if (ModelState.IsValid)
+            {
+                await _Product.Create(product);
+                return Content("Create done");
+            }
+            else
+            {
+
+                return View(product);
+            }
+        }
+
+        
+
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _Product.Delete(id);
+
+
+            return Content("Delete done");
+        }
+
     }
 }

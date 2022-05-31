@@ -12,5 +12,17 @@ namespace FastMarket.Models.Interfaces
 
         Task<List<CartDTO>> GetCarts();
         Task<Cart> GetCart(int id);
+
+
+        Task<Cart> Create(Cart cart);
+        Task<Cart> UpdateCart(int id, Cart cart);
+        Task Delete(int id);
+
+
+
+        Task<Cart> AddProductToCart(int CartId, Product product);
+
+        Task deleteProductFromCart(int CartId, int productId);
+
     }
 }

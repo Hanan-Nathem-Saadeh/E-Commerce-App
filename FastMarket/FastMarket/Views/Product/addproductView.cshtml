@@ -1,0 +1,11 @@
+﻿@model FastMarket.Models.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<h2>hello form add page </h2>
+
+<form asp-controller="Product" asp-action="AddProduct" method="post">
+
+    <partial name="_AddEdit"/>
+    <button type="submit">add product</button>
+</form>
