@@ -28,5 +28,33 @@ namespace FastMarket.Models.Services
         {
             return await _context.Products.FirstOrDefaultAsync(z => z.Id == id);
         }
+
+        public async Task<Product> Create(Product product)
+        {
+
+            _context.Entry(product).State = EntityState.Added;
+
+            await _context.SaveChangesAsync();
+            return product;
+        }
+
+        public async Task<Product> UpdateProduct(int id, Product product)
+        {
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return product;
+        }
+
+        public async Task Delete(int id)
+        {
+            Product product = await GetProduct(id);
+
+            if (product != null)
+            {
+                _context.Entry(product).State = EntityState.Deleted;
+
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

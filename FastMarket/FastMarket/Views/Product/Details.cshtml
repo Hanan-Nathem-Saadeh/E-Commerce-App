@@ -1,9 +1,18 @@
 ﻿@model FastMarket.Models.Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h1>
+    Add new Product <a asp-controller="Product" asp-action="addproductView"> here </a>
+</h1>
+
+<h1> Name : @Model.Name </h1>
+<br />
+<h2>Description : @Model.Description</h2>
+<br />
+<h2>Price : @Model.Price</h2>
+
+<a asp-controller="Product" asp-action="Update" asp-route-id=@Model.Id>update</a>
+<a asp-controller="Product" asp-action="DeleteProduct" asp-route-id=@Model.Id > delete </a>
 
 
-    <h1> Name : @Model.Name </h1>
-    <br />
-    <h2>Description : @Model.Description</h2>
-    <br />
-    <h2>Price : @Model.Price</h2>
-    
+

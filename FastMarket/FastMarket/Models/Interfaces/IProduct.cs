@@ -9,5 +9,9 @@ namespace FastMarket.Models.Interfaces
     {
         Task<List<Product>> GetProducts();
         Task<Product> GetProduct(int id);
+
+        Task<Product> Create(Product product);
+        Task<Product> UpdateProduct(int id, Product product);
+        Task Delete(int id);
     }
 }

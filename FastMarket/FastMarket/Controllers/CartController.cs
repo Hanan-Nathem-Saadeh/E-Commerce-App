@@ -24,7 +24,8 @@ namespace FastMarket.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            var cart = _cart.GetCart(id);
+
+            var cart = await _cart.GetCart(id);
             return View(cart);
         }
     }
