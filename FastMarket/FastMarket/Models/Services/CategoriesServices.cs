@@ -18,19 +18,37 @@ namespace FastMarket.Models.Services
             _context = context;
         }
 
-        public Task<Categories> AddProductToCategories(int categoriesId, Product product)
+        public async Task<Product> AddProductToCategories(int categoriesId, Product product)
         {
-            throw new NotImplementedException();
+           
+            _context.Entry(product).State = EntityState.Added;
+
+            await _context.SaveChangesAsync();
+            //product = await _context.Products.FirstOrDefaultAsync();
+            CategoriesProduct categoryProduct = new CategoriesProduct()
+            {
+                ProductId = product.Id,
+                CategoriesId = categoriesId
+            };
+
+            _context.Entry(categoryProduct).State = EntityState.Added;
+
+            await _context.SaveChangesAsync();
+
+            return product;
         }
 
-        public Task<Categories> Create(Categories categories)
+        public async Task<Categories> Create(Categories categories)
         {
-            throw new NotImplementedException();
+            _context.Entry(categories).State = EntityState.Added;
+
+            await _context.SaveChangesAsync();
+            return categories;
         }
 
         public async Task Delete(int id)
         {
-            Categories categories= await _context.Categories.FirstOrDefaultAsync(z => z.Id == id);
+            Categories categories = await GetCategory(id); ;
 
             if (categories != null)
             {
@@ -38,11 +56,20 @@ namespace FastMarket.Models.Services
 
                 await _context.SaveChangesAsync();
             }
+           
         }
 
-        public Task deleteProductFromCategories(int categoriesId, int productId)
+        public async Task deleteProductFromCategories(int categoriesId, int productId)
         {
-            throw new NotImplementedException();
+            //CategoriesProduct categories = await _context.CategoriesProducts.FirstOrDefaultAsync(x => x.ProductId == productId && x.CategoriesId==categoriesId);
+            Product categories = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId );
+            if (categories != null)
+            {
+                _context.Entry(categories).State = EntityState.Deleted;
+
+                await _context.SaveChangesAsync();
+            }
+
         }
 
         public async Task<List<Categories>> GetCategories()
@@ -55,9 +82,11 @@ namespace FastMarket.Models.Services
              return await _context.Categories.Include(x => x.categoriesProducts).ThenInclude(y => y.Product).FirstOrDefaultAsync(z => z.Id == id);
         }
 
-        public Task<Cart> UpdateCategories(int id, Categories categories)
+        public async Task<Categories> UpdateCategories(int id, Categories categories)
         {
-            throw new NotImplementedException();
+            _context.Entry(categories).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return categories;
         }
     }
 }

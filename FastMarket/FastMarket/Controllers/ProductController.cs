@@ -50,7 +50,7 @@ namespace FastMarket.Controllers
             else
             {
 
-                return View("AddEditProduct", product);
+                return View("addproductView", product);
             }
         }
 

@@ -1,0 +1,17 @@
+﻿@model FastMarket.Models.Categories
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<form asp-controller="Categories" asp-action = "Add" method ="post">
+    <label>
+        Name : 
+        <input asp-for ="@Model.Name" />
+    </label>
+       <label>
+        Detils : 
+        <input asp-for ="@Model.Details" />
+    </label>
+    <button type="submit"> Add </button>
+
+</form>
+<div asp-validation-summary="All"></div>

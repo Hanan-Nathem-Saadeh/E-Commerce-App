@@ -1,4 +1,5 @@
 ﻿using FastMarket.Data;
+using FastMarket.Models;
 using FastMarket.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -31,5 +32,74 @@ namespace FastMarket.Controllers
 
             return View(category);
         }
+        public async Task<IActionResult> Edit(int id)
+        {
+            Categories category = await _Categories.GetCategory(id);
+            return View(category);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Categories category)
+        {     
+            if (ModelState.IsValid)
+            {
+                Categories categories = await _Categories.UpdateCategories(category.Id, category);
+                return Content("Updated Successfully :) ");
+            }
+            else
+            {
+                    return View(category);
+            }              
+            
+        }
+        public IActionResult Add()
+        {
+             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Add(Categories category)
+        {
+            if (ModelState.IsValid)
+            {
+               await _Categories.Create(category);
+                return Content("Add new Category Successfully ... :)");
+            }
+            else
+            {
+                return View(category);
+            }
+        }
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            await _Categories.Delete(id);
+            return Content("Delete done");
+        }
+        public IActionResult AddProductToCategories(int CategoryId)
+        {
+            CategoriesProduct categoryProduct = new CategoriesProduct()
+            {
+                CategoriesId = CategoryId
+            };
+            return View(categoryProduct);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProductToCategories(CategoriesProduct categoryProduct)
+        {
+            if (ModelState.IsValid)
+            {
+                await _Categories.AddProductToCategories(categoryProduct.CategoriesId,categoryProduct.Product);
+                return Content("Add Product to Category Done :)");
+            }
+            else
+            {
+                return View(categoryProduct);
+            }
+        }
+        public async Task<IActionResult> RemoveProductFromCategory(int CategoryId , int ProductId)
+        {
+            await _Categories.deleteProductFromCategories(CategoryId, ProductId );
+            return Content("Delete done");
+        }
+
     }
 }
