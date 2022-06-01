@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32328.378
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarket", "FastMarket\FastMarket.csproj", "{1F7AC4D3-6E15-428E-8C39-D3822D65BE5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastMarket", "FastMarket\FastMarket.csproj", "{1F7AC4D3-6E15-428E-8C39-D3822D65BE5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketTestData", "FastMarketTestData\FastMarketTestData.csproj", "{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1F7AC4D3-6E15-428E-8C39-D3822D65BE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F7AC4D3-6E15-428E-8C39-D3822D65BE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F7AC4D3-6E15-428E-8C39-D3822D65BE5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
