@@ -35,7 +35,14 @@ namespace FastMarket.Controllers
         {
             Product product = await _Product.GetProduct(id);
 
-            return View("AddEditProduct", product);
+            return View( product);
+        }
+
+        public IActionResult addproductView()
+        {
+             ViewBag.meth = "add";
+
+            return View("addproductView");
         }
 
         [HttpPost]
@@ -50,17 +57,11 @@ namespace FastMarket.Controllers
             else
             {
 
-                return View("addproductView", product);
+                return View( product);
             }
         }
 
 
-        public  IActionResult addproductView ()
-        {
-           // ViewBag.meth = "add";
-
-            return View();
-        }
 
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product)
@@ -74,7 +75,7 @@ namespace FastMarket.Controllers
             else
             {
 
-                return View(product);
+                return View("addproductView", product);
             }
         }
 
