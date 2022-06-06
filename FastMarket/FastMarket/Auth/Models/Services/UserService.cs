@@ -14,10 +14,9 @@ namespace FastMarket.Auth.Models.Services
     public class UserService : IUserService
     {
         private UserManager<ApplicationUser> _userManager;
-        // remove the JwtToken Service and use the signInManager
+  
         private SignInManager<ApplicationUser> _signInManager;
 
-        // replace JWT with signInmanager
         public UserService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> SignInMngr)
         {
             _userManager = userManager;

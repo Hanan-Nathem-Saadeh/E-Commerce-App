@@ -35,8 +35,8 @@ namespace FastMarket
         {
             services.AddMvc();
 
-            services.AddDbContext<FastMarketDBContext>(options => {
-                // Our DATABASE_URL from js days
+            services.AddDbContext<FastMarketDBContext>(options =>
+            {
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
@@ -44,7 +44,7 @@ namespace FastMarket
             {
                 options.User.RequireUniqueEmail = true;
             })
-       .AddEntityFrameworkStores<FastMarketDBContext>();
+     .AddEntityFrameworkStores<FastMarketDBContext>();
 
             services.ConfigureApplicationCookie(options =>
             {
