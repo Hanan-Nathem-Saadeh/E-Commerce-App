@@ -59,18 +59,18 @@ namespace FastMarket.Models.Services
            
         }
 
-        //public async Task deleteProductFromCategories(int categoriesId, int productId)
-        //{
-        //    //CategoriesProduct categories = await _context.CategoriesProducts.FirstOrDefaultAsync(x => x.ProductId == productId && x.CategoriesId==categoriesId);
-        //    Product categories = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId );
-        //    if (categories != null)
-        //    {
-        //        _context.Entry(categories).State = EntityState.Deleted;
+        public async Task deleteProductFromCategories(int categoriesId, int productId)
+        {
+            //CategoriesProduct categories = await _context.CategoriesProducts.FirstOrDefaultAsync(x => x.ProductId == productId && x.CategoriesId==categoriesId);
+            Product categories = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId);
+            if (categories != null)
+            {
+                _context.Entry(categories).State = EntityState.Deleted;
 
-        //        await _context.SaveChangesAsync();
-        //    }
+                await _context.SaveChangesAsync();
+            }
 
-        //}
+        }
 
         public async Task<List<Categories>> GetCategories()
         {
