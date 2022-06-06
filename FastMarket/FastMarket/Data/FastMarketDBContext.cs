@@ -1,9 +1,11 @@
-﻿using FastMarket.Models;
+﻿using FastMarket.Auth.Models;
+using FastMarket.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FastMarket.Data
 {
-    public class FastMarketDBContext : DbContext
+    public class FastMarketDBContext : IdentityDbContext<ApplicationUser>
     {
         public FastMarketDBContext(DbContextOptions options) : base(options)
         {

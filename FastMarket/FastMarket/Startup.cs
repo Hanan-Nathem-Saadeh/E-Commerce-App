@@ -1,9 +1,13 @@
+using FastMarket.Auth.Models;
+using FastMarket.Auth.Models.Interfaces;
+using FastMarket.Auth.Models.Services;
 using FastMarket.Data;
 using FastMarket.Models.Interfaces;
 using FastMarket.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +40,21 @@ namespace FastMarket
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            })
+       .AddEntityFrameworkStores<FastMarketDBContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/auth/index";
+            });
+            services.AddAuthentication();
+            services.AddAuthorization();
+
+            services.AddTransient<IUserService, UserService>();
+
             services.AddScoped<ICart, CartServices>();
 
             services.AddScoped<IProduct, ProductService>();
@@ -64,6 +83,8 @@ namespace FastMarket
                 app.UseDeveloperExceptionPage();
             }
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
