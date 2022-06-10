@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace FastMarket.Models.Interfaces
         Task Delete(int id);
 
 
-        Task<Product> AddProductToCategories(int categoriesId, Product product);
+        Task<Product> AddProductToCategories(int categoriesId, Product product, IFormFile file);
         
         Task deleteProductFromCategories(int categoriesId, int productId);
     }

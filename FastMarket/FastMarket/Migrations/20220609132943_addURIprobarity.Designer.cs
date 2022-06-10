@@ -4,14 +4,16 @@ using FastMarket.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FastMarket.Migrations
 {
     [DbContext(typeof(FastMarketDBContext))]
-    partial class FastMarketDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220609132943_addURIprobarity")]
+    partial class addURIprobarity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -279,7 +281,6 @@ namespace FastMarket.Migrations
                             Id = 1,
                             Amount = 150,
                             Description = "Maybelline New York Colossal Bold Liner & Colossal Kajal - EYE KIT COMBO (Pack Of 2), 0.35 gm + 3 ml",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Liner & Colossal Kajal",
                             Price = 15.5m
                         },
@@ -288,7 +289,6 @@ namespace FastMarket.Migrations
                             Id = 2,
                             Amount = 120,
                             Description = "URBANMAC Premium Synthetic Kabuki Foundation Face Powder Blush Eyeshadow Brush Makeup Brush Kit with Blender Sponge and Brush Cleaner - Makeup Brushes Set",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Blushes",
                             Price = 20.00m
                         },
@@ -297,7 +297,6 @@ namespace FastMarket.Migrations
                             Id = 3,
                             Amount = 250,
                             Description = "Coloressence Full Coverage Waterproof Lightweight Matte Formula Opaque Lotion High Definition Foundation (HDF-2) with Set of 2 Blending Sponge",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Foundation ",
                             Price = 50.00m
                         },
@@ -314,7 +313,6 @@ namespace FastMarket.Migrations
                             Id = 5,
                             Amount = 30,
                             Description = "Description1",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Product1",
                             Price = 100m
                         },
@@ -323,7 +321,6 @@ namespace FastMarket.Migrations
                             Id = 6,
                             Amount = 40,
                             Description = "Description2",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Product2",
                             Price = 350m
                         },
@@ -332,7 +329,6 @@ namespace FastMarket.Migrations
                             Id = 7,
                             Amount = 50,
                             Description = "Description3",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Product3",
                             Price = 200m
                         },
@@ -341,7 +337,6 @@ namespace FastMarket.Migrations
                             Id = 8,
                             Amount = 60,
                             Description = "Description4",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Product4",
                             Price = 230m
                         },
@@ -350,7 +345,6 @@ namespace FastMarket.Migrations
                             Id = 9,
                             Amount = 70,
                             Description = "Description5",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Product5",
                             Price = 105m
                         },
@@ -359,7 +353,6 @@ namespace FastMarket.Migrations
                             Id = 10,
                             Amount = 70,
                             Description = "Description10",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
                             Name = "Product10",
                             Price = 105m
                         });

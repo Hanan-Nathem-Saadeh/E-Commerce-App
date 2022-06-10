@@ -1,6 +1,7 @@
 ﻿using FastMarket.Data;
 using FastMarket.Models;
 using FastMarket.Models.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -83,11 +84,11 @@ namespace FastMarket.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProductToCategories(CategoriesProduct categoryProduct)
+        public async Task<IActionResult> AddProductToCategories(CategoriesProduct categoryProduct , IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                await _Categories.AddProductToCategories(categoryProduct.CategoriesId,categoryProduct.Product);
+                await _Categories.AddProductToCategories(categoryProduct.CategoriesId,categoryProduct.Product,file);
                 return Content("Add Product to Category Done :)");
             }
             else

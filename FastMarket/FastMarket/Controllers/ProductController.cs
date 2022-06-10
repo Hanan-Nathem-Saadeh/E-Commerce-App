@@ -1,5 +1,6 @@
 ﻿using FastMarket.Models;
 using FastMarket.Models.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -38,20 +39,15 @@ namespace FastMarket.Controllers
             return View( product);
         }
 
-        public IActionResult addproductView()
-        {
-             ViewBag.meth = "add";
-
-            return View("addproductView");
-        }
+     
 
         [HttpPost]
-        public async Task<IActionResult> Update(Product product)
+        public async Task<IActionResult> Update(Product product,IFormFile file)
         {
 
             if (ModelState.IsValid)
             {
-                await _Product.UpdateProduct(product.Id,product);
+                await _Product.UpdateProduct(product.Id,product, file);
                 return Content("Update done");
             }
             else
@@ -61,21 +57,25 @@ namespace FastMarket.Controllers
             }
         }
 
+        public IActionResult addproductView()
+        {
+           // ViewBag.meth = "add";
 
+            return View("addproductView");
+        }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(Product product)
+        public async Task<IActionResult> AddProduct(Product product, IFormFile file)
         {
 
             if (ModelState.IsValid)
             {
-                await _Product.Create(product);
+                await _Product.Create(product,file);
                 return Content("Create done");
             }
             else
             {
-
-                return View("addproductView", product);
+                 return View("addproductView", product);
             }
         }
 

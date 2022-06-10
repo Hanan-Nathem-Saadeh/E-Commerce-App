@@ -1,6 +1,8 @@
 ﻿using FastMarket.Data;
 using FastMarket.Models.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +14,18 @@ namespace FastMarket.Models.Services
     {
 
         private readonly FastMarketDBContext _context;
+        IConfiguration _configration;
 
-        public CategoriesServices(FastMarketDBContext context)
+        public CategoriesServices(FastMarketDBContext context , IConfiguration configration)
         {
             _context = context;
+            _configration = configration;
         }
 
-        public async Task<Product> AddProductToCategories(int categoriesId, Product product)
+        public async Task<Product> AddProductToCategories(int categoriesId, Product product,IFormFile file)
         {
-           
+            ProductService PService = new ProductService(_context,_configration);
+            product.ImageUri=  PService.GetFile(file).Result;
             _context.Entry(product).State = EntityState.Added;
 
             await _context.SaveChangesAsync();
