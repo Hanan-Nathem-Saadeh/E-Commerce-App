@@ -19,7 +19,8 @@
 
     @foreach (var item in Model.categoriesProducts)
    {
-
+       <img src = "@item.Product.ImageUri" width = 100/> 
+       <br />
        <h3>Name : @item.Product.Name</h3>
        <h3> Description : @item.Product.Description</h3>
        <h3> Price : @item.Product.Price</h3>

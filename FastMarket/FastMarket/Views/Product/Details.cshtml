@@ -4,7 +4,9 @@
 <h1>
     Add new Product <a asp-controller="Product" asp-action="addproductView"> here </a>
 </h1>
-
+<br />
+ <img src ="@Model.ImageUri" width = 200 />
+ <br />
 <h1> Name : @Model.Name </h1>
 <br />
 <h2>Description : @Model.Description</h2>

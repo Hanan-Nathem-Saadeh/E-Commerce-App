@@ -3,7 +3,7 @@
 
 <h2> hello in update page </h2>
 
-<form asp-controller="Product" asp-action="Update" method="post">
+<form asp-controller="Product" asp-action="Update" method="post" enctype="multipart/form-data">
     <input hidden asp-for="@Model.Id" />
 
     <partial name="_AddEdit" />

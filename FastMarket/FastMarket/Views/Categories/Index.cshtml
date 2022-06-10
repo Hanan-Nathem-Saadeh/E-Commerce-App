@@ -3,7 +3,7 @@
 
      <a asp-controller = "Categories" asp-action= "Add"> Create New Category</a>
   
-      
+  <a asp-controller ="Home" asp-action = "Index" > <button>Back</button> </a>    
 @foreach (var item in Model)
 {
     <h1>Name : @item.Name </h1>
@@ -19,6 +19,9 @@
 
     @foreach (var items in item.categoriesProducts)
    {
+       <img src = "@items.Product.ImageUri" width = 100/> 
+
+       <br />
        <h3>Name : @items.Product.Name</h3>
        <h3> Description : @items.Product.Description</h3>
        <h3> Price : @items.Product.Price</h3>
