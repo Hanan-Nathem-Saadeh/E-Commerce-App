@@ -1,6 +1,7 @@
 ﻿using FastMarket.Data;
 using FastMarket.Models;
 using FastMarket.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,7 @@ namespace FastMarket.Controllers
 
             return View(category);
         }
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Edit(int id)
         {
             Categories category = await _Categories.GetCategory(id);
@@ -52,6 +54,7 @@ namespace FastMarket.Controllers
             }              
             
         }
+        [Authorize(Roles = "Administrator ")]
         public IActionResult Add()
         {
              return View();
@@ -69,11 +72,14 @@ namespace FastMarket.Controllers
                 return View(category);
             }
         }
+        [Authorize(Roles = "Administrator ")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             await _Categories.Delete(id);
             return Content("Delete done");
         }
+        // [Authorize(Roles = "Administrator,Editor ")]
+        [Authorize(Roles = "Editor")]
         public IActionResult AddProductToCategories(int CategoryId)
         {
             CategoriesProduct categoryProduct = new CategoriesProduct()
@@ -96,6 +102,8 @@ namespace FastMarket.Controllers
                 return View(categoryProduct);
             }
         }
+        //[Authorize(Roles = "Administrator ,Editor")]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> RemoveProductFromCategory(int CategoryId , int ProductId)
         {
             await _Categories.deleteProductFromCategories(CategoryId, ProductId );

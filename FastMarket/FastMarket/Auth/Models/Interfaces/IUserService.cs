@@ -13,6 +13,7 @@ namespace FastMarket.Auth.Models.Interfaces
         public Task<UserDto> Register(RegisterDto registerDto, ModelStateDictionary modelstate);
         public Task<UserDto> Authenticate(string username, string password);
         public Task<UserDto> GetUser(ClaimsPrincipal principal);
+        public Task LogOut();
 
     }
 }
