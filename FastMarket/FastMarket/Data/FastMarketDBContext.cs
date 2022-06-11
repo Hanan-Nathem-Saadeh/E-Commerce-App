@@ -1,5 +1,6 @@
 ﻿using FastMarket.Auth.Models;
 using FastMarket.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -78,10 +79,23 @@ namespace FastMarket.Data
 
                 );
 
-
-
-
-
+            SeedRole(modelBuilder, "Administrator");
+            SeedRole(modelBuilder, "Editor");
+            SeedRole(modelBuilder, "Users");
+            //modelBuilder.Entity<ApplicationUser>().HasData(
+            //    new ApplicationUser {UserName = "fuad",Email="fx.m@gmail.com",PasswordHash  }
+            //    );
+        }
+        private void SeedRole(ModelBuilder modelBuilder, string roleName)
+        {
+            var role = new IdentityRole
+            {
+                Id = roleName.ToLower(),
+                Name = roleName,
+                NormalizedName = roleName.ToUpper(),
+                ConcurrencyStamp = Guid.Empty.ToString()
+            };
+            modelBuilder.Entity<IdentityRole>().HasData(role);
         }
     }
 }

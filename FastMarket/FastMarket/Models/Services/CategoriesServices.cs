@@ -53,14 +53,15 @@ namespace FastMarket.Models.Services
 
         public async Task Delete(int id)
         {
-            Categories categories = await GetCategory(id); ;
+         
 
-            if (categories != null)
-            {
+            Categories categories = await _context.Categories.FindAsync(id);
+
+            
                 _context.Entry(categories).State = EntityState.Deleted;
 
                 await _context.SaveChangesAsync();
-            }
+           
            
         }
 

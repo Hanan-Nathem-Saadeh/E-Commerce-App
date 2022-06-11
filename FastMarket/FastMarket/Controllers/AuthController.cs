@@ -35,7 +35,12 @@ namespace FastMarket.Controllers
             {
                 return Redirect("/");
             }
-            return View();
+            else
+            {
+                return View(register);
+
+            }
+           
         }
 
         public async Task<ActionResult<UserDto>> Authenticate(LoginDTO login)
@@ -43,9 +48,23 @@ namespace FastMarket.Controllers
             var user = await userService.Authenticate(login.UserName, login.Password);
             if (user == null)
             {
-                return RedirectToAction("Index");
+                ViewBag.WrongUser = "user name or password is wrong !! ";
+                return View("Index",login);
+
             }
-            return Redirect("/");
+            else
+            {
+                
+
+                return View("Index", login);
+            }
+            
+        }
+        [HttpPost]
+        public async Task<IActionResult> LogOut()
+        {
+            await userService.LogOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

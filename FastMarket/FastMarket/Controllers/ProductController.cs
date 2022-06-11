@@ -1,5 +1,6 @@
 ﻿using FastMarket.Models;
 using FastMarket.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace FastMarket.Controllers
 {
+   
     public class ProductController : Controller
     {
         private readonly IProduct _Product;
@@ -31,7 +33,8 @@ namespace FastMarket.Controllers
         }
 
 
-
+        //[Authorize(Roles = "Administrator,Editor ")]
+        [Authorize(Roles = "Editor")]
         public async Task<IActionResult> Update(int id)
         {
             Product product = await _Product.GetProduct(id);
@@ -39,8 +42,8 @@ namespace FastMarket.Controllers
             return View( product);
         }
 
-     
 
+   
         [HttpPost]
         public async Task<IActionResult> Update(Product product,IFormFile file)
         {
@@ -56,6 +59,7 @@ namespace FastMarket.Controllers
                 return View( product);
             }
         }
+        [Authorize(Roles = "Administrator ")]
 
         public IActionResult addproductView()
         {
@@ -63,7 +67,7 @@ namespace FastMarket.Controllers
 
             return View("addproductView");
         }
-
+        [Authorize(Roles = "Administrator ")]
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product, IFormFile file)
         {
@@ -79,8 +83,8 @@ namespace FastMarket.Controllers
             }
         }
 
-        
 
+        [Authorize(Roles = "Administrator ")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             await _Product.Delete(id);

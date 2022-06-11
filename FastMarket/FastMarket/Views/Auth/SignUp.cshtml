@@ -2,9 +2,10 @@
 
 
 <form asp-controller="Auth" asp-action = "SignUp" method ="post">
-    <input name="UserName"/>
-    <input name="Password"/>
-    <input name="Email"/>
+ <label> User Name <input name="UserName"/> </label> 
+   <label> Password  <input name="Password"/></label>  
+    <label> Email  <input name="Email"/></label> 
     <button type="submit"> Sign Up </button>
-
 </form>
+
+<div asp-validation-summary="All"></div>
