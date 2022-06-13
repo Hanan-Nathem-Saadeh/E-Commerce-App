@@ -1,0 +1,20 @@
+﻿@page
+@model FastMarket.Pages.CategPage.IndexModel
+@{
+    ViewBag.titel = "Category";
+
+}
+
+<h1>Category</h1>
+
+
+@foreach (var item in Model.list1)
+{
+    <h1>Name : @item.Name </h1>
+    <br />
+    <h1>Details : @item.Details </h1>
+    <br />
+    <a asp-page="/CategPage/CategProduct" asp-route-id=@item.Id>go To Products</a>
+
+    <hr />
+}

@@ -1,0 +1,29 @@
+﻿@page
+@model FastMarket.Pages.CategPage.CategProductModel
+@{
+    ViewBag.titel = "All Categories";
+}
+
+<h1>All Categories</h1>
+
+<h1>Name : @Model.categories.Name </h1>
+<br />
+<h1>Details : @Model.categories.Details </h1>
+<br />
+
+
+
+@foreach (var item in Model.categories.categoriesProducts)
+{
+    <img src="@item.Product.ImageUri" width=100 />
+
+    <br />
+    <h3>Name : @item.Product.Name</h3>
+    <h3> Description : @item.Product.Description</h3>
+    <h3> Price : @item.Product.Price</h3>
+    <br />
+    <hr style="height:2px;width:400px;border-width:1px;">
+
+
+}
+<hr />
