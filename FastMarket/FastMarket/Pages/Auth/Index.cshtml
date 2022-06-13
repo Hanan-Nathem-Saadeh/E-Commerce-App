@@ -1,22 +1,21 @@
 ﻿@page
 @model FastMarket.Pages.Auth.IndexModel
 @{
+    ViewBag.Title = "Sign In Page";
 }
 
+from razur
 
- wellcome to @Model.name2
-
-@{ foreach (var item in Model.applicationUsers)
+ 
+@{if (ViewBag.WrongUser != null)
     {
+        <h2>@ViewData["WrongUser"]</h2>
+    }}
 
-    <h1>UserName  @item.UserName   @item.Email </h1>
-    } }
+<form  method="post">
+    <label>User Name <input name="UserName" /> </label>
+    <label> Password  <input name="Password" /></label>
+    <button type="submit"> Login </button>
 
-
-<form method="post">
-    <label> User Name <input asp-for="@Model.registerDto.UserName" /> </label>
-    <label> Password  <input asp-for="@Model.registerDto.Password" /></label>
-    <label> Email  <input asp-for="@Model.registerDto.Email" /></label>
-    <button type="submit"> Sign Up </button>
 </form>
-
+<div asp-validation-summary="All"></div>

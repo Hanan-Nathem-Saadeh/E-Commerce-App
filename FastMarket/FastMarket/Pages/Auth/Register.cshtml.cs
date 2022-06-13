@@ -10,16 +10,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FastMarket.Pages.Auth
 {
-    public class IndexModel : PageModel
+    public class RegisterModel : PageModel
     {
         public readonly IUserService _userService;
 
-        public IndexModel(IUserService userService)
+        public RegisterModel(IUserService userService)
         {
             _userService = userService;
         }
 
 
+        public string name2 { get; set; }
         public RegisterDto registerDto { get; set; }
         public UserDto user { get; set; }
 
@@ -28,29 +29,18 @@ namespace FastMarket.Pages.Auth
 
         public async Task OnGet()
         {
-            
+
+            applicationUsers = await _userService.getAll();
+
         }
 
-        
-        public LoginDTO loginDTO{ get; set; }
 
-        public async Task<IActionResult> OnPostAsync(LoginDTO loginDTO)
+        public async Task OnPostAsync(RegisterDto registerDto)
         {
 
-            user = await _userService.Authenticate(loginDTO.UserName, loginDTO.Password);
+            user = await _userService.Register(registerDto, this.ModelState);
 
-            if (user != null)
-            {
-                return   RedirectToPage("Register");
-            }
-            else
-            {
-                ViewData["WrongUser"]= "user name or password is wrong ";
-
-                return null;
-              }
-
-
+            await OnGet();
         }
     }
 }

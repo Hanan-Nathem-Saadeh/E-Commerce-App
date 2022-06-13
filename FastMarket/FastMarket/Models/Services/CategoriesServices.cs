@@ -46,7 +46,6 @@ namespace FastMarket.Models.Services
         public async Task<Categories> Create(Categories categories)
         {
             _context.Entry(categories).State = EntityState.Added;
-
             await _context.SaveChangesAsync();
             return categories;
         }
