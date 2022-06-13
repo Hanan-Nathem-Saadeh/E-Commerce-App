@@ -1,0 +1,22 @@
+﻿@page
+@model FastMarket.Pages.Auth.IndexModel
+@{
+}
+
+
+ wellcome to @Model.name2
+
+@{ foreach (var item in Model.applicationUsers)
+    {
+
+    <h1>UserName  @item.UserName   @item.Email </h1>
+    } }
+
+
+<form method="post">
+    <label> User Name <input asp-for="@Model.registerDto.UserName" /> </label>
+    <label> Password  <input asp-for="@Model.registerDto.Password" /></label>
+    <label> Email  <input asp-for="@Model.registerDto.Email" /></label>
+    <button type="submit"> Sign Up </button>
+</form>
+

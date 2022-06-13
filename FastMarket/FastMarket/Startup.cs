@@ -88,6 +88,7 @@ namespace FastMarket
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             });
             app.UseStaticFiles();

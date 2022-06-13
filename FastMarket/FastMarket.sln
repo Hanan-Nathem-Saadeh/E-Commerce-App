@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastMarket", "FastMarket\FastMarket.csproj", "{1F7AC4D3-6E15-428E-8C39-D3822D65BE5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastMarketTestData", "FastMarketTestData\FastMarketTestData.csproj", "{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastMarketTestData", "FastMarketTestData\FastMarketTestData.csproj", "{717B56D5-673D-43C3-939C-B7C1BF7E1CE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

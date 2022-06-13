@@ -3,6 +3,7 @@ using FastMarket.Auth.Models.DTO;
 using FastMarket.Auth.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,11 +35,11 @@ namespace FastMarket.Auth.Models.Services
 
             if (result.Succeeded)
             {
-                List<string> Roles = new List<string>();
-                //Roles.Add("Administrator");
-                //Roles.Add("Editor");
-                Roles.Add("Users");
-                await _userManager.AddToRolesAsync(user, Roles);
+                //List<string> Roles = new List<string>();
+                ////Roles.Add("Administrator");
+                ////Roles.Add("Editor");
+                //Roles.Add("Users");
+                //await _userManager.AddToRolesAsync(user, Roles);
                 return new UserDto
                 {
                     Username = user.UserName,
@@ -87,6 +88,14 @@ namespace FastMarket.Auth.Models.Services
         {
 
             await _signInManager.SignOutAsync();
+
+
+        }
+
+        public async Task<List<ApplicationUser>> getAll()
+        {
+
+          return  await _userManager.Users.ToListAsync();
 
 
         }
