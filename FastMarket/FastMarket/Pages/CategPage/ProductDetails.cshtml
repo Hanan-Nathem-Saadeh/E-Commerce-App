@@ -1,0 +1,23 @@
+﻿@page
+@model FastMarket.Pages.CategPage.ProductDetailsModel
+@{
+    ViewBag.titel = "Product Details";
+}
+
+<img src="@Model.product.ImageUri" width=100 />
+
+    <br />
+    <h3>Name : @Model.product.Name</h3>
+    <h3> Description : @Model.product.Description</h3>
+    <h3> Price : @Model.product.Price</h3>
+    <br />
+   <form method="post" >
+              <input hidden asp-for ="@Model.product.Id" value=@Model.product.Id  />
+
+       <input hidden asp-for ="@Model.product.Name" value=@Model.product.Name  />
+       <input hidden asp-for ="@Model.product.Description" value=@Model.product.Description  />
+       <input hidden asp-for ="@Model.product.Price" value=@Model.product.Price  />
+       <input hidden asp-for ="@Model.product.ImageUri" value=@Model.product.ImageUri />
+       <button type="submit" > Add To Cart  </button>
+   </form>
+    <hr style="height:2px;width:400px;border-width:1px;">
