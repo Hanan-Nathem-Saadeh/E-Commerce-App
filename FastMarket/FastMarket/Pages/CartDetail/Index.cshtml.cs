@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FastMarket.Pages.cart
+namespace FastMarket.Pages.CartDetail
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public async void OnGet()
         {
+
         }
     }
 }

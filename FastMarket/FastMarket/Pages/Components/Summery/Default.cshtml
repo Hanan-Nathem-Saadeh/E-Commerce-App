@@ -1,0 +1,25 @@
+﻿@using FastMarket.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@model FastMarket.Components.SummeryViewComponent
+
+<br />
+<br />
+<h1> Summary of my purchase : </h1>
+
+<br />
+@foreach (Product product in  @Model.ListProduct)
+{
+    <img src = "@product.ImageUri" width = 100/> 
+         <br />
+
+     <h2>  Name : @product.Name </h2>
+     <h4>  Description : @product.Description </h4>
+     <h4>  Price : @product.Price </h4>
+     <br />
+     <br />
+     
+    
+}
+

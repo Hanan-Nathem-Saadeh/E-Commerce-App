@@ -1,0 +1,28 @@
+﻿@page
+@model FastMarket.Pages.Email.IndexModel
+@{
+    <br />
+    <br />
+    <br />
+    <br />
+    @*
+    if (Model.result==true)
+    {
+        <h1> Sucsess </h1>
+    }
+    else
+    {
+    <h1> Some thin wrong</h1>
+    }
+    *@
+}
+
+<br />
+<br />
+<br />
+<br />
+<form method="post"> 
+  <labl> Title :  <input  asp-for = "title"/> </label>
+   <lable> Send To : <input  asp-for = "ToEmail"/></lable> 
+   <button type ="submit"> Send Email </button>
+   </form>

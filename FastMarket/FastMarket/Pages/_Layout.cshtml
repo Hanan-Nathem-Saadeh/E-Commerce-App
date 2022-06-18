@@ -28,8 +28,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">AppName</a>
-               @await Component.InvokeAsync("Count")
+              <a asp-area="" asp-page="/CartCookie/Index" class="navbar-brand"> Cart </a>
+              <a asp-area="" asp-page="/cartDetails/Index" class="navbar-brand"> Cart Summery  </a>
+              <a asp-area="" asp-page="/Email/Index" class="navbar-brand"> Send Email </a>
+           @await Component.InvokeAsync("Cart")
+           @await Component.InvokeAsync("Summery")
+         
+       
                 @*
+
+                   @await Component.InvokeAsync("Count")
                 @{   var count1 = 0;
                         if (HttpContext.Request.Cookies["Count"] != null)
                         {
