@@ -35,11 +35,11 @@ namespace FastMarket.Auth.Models.Services
 
             if (result.Succeeded)
             {
-                //List<string> Roles = new List<string>();
-                ////Roles.Add("Administrator");
+               List<string> Roles = new List<string>();
+             Roles.Add("Administrator");
                 ////Roles.Add("Editor");
                 //Roles.Add("Users");
-                //await _userManager.AddToRolesAsync(user, Roles);
+              await _userManager.AddToRolesAsync(user, Roles);
                 return new UserDto
                 {
                     Username = user.UserName,
@@ -86,18 +86,12 @@ namespace FastMarket.Auth.Models.Services
         }
         public async Task LogOut()
         {
-
-            await _signInManager.SignOutAsync();
-
-
+             await _signInManager.SignOutAsync();
         }
 
         public async Task<List<ApplicationUser>> getAll()
         {
-
-          return  await _userManager.Users.ToListAsync();
-
-
+             return  await _userManager.Users.ToListAsync();
         }
     }
 }

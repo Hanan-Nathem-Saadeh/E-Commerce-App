@@ -4,26 +4,58 @@
     ViewBag.titel = "All Categories";
 }
 
-<h1>All Categories</h1>
 
-<h1>Name : @Model.categories.Name </h1>
-<br />
-<h1>Details : @Model.categories.Details </h1>
+<h1> @Model.categories.Name </h1>
 <br />
 
 
 
+
+<section style="background-color: #eee;">
+  <div class="text-center container py-5">
+    <h4 class="mt-4 mb-5"><strong>Product List</strong></h4>
+
+    <div class="row"> 
 @foreach (var item in Model.categories.categoriesProducts)
 {
-    <img src="@item.Product.ImageUri" width=100 />
 
-    <br />
-    <h3>Name : @item.Product.Name</h3>
-    <h3> Description : @item.Product.Description</h3>
-    <h3> Price : @item.Product.Price</h3>
-    <br />
-    <hr style="height:2px;width:400px;border-width:1px;">
-     <a asp-page="/CategPage/ProductDetails" asp-route-id=@item.Product.Id>go Product Details </a>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            <img src="@item.Product.ImageUri"
+              class="w-100" />
+            <a href="#!">
+              <div class="mask">
+                <div class="d-flex justify-content-start align-items-end h-100"></div>
+              </div>
+              <div class="hover-overlay">
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </div>
+            </a>
+          </div>
+          <div class="card-body">
+           
+              <h5 class="card-title mb-3">@item.Product.Name</h5>
+              <h5 class="card-title mb-3">@item.Product.Price</h5>
+          
+            <h6 class="mb-3">@item.Product.Description</h6>
+                            <Button variant="secondary" onClick={close}> <a asp-page="/CategPage/ProductDetails" asp-route-id=@item.Product.Id> Product Details </a> </Button>
+
+     
+          </div>
+        </div>
+      </div>
 
 }
-<hr />
+
+
+        </div>
+        </div>
+        </section>
+
+
+
+
+
+

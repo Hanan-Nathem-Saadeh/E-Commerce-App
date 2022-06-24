@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FastMarket.Migrations
 {
     [DbContext(typeof(FastMarketDBContext))]
-    [Migration("20220611121537_SeedRoles")]
-    partial class SeedRoles
+    [Migration("20220624204151_seedData")]
+    partial class seedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -392,29 +392,6 @@ namespace FastMarket.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "administrator",
-                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "editor",
-                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
-                            Name = "Editor",
-                            NormalizedName = "EDITOR"
-                        },
-                        new
-                        {
-                            Id = "users",
-                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
-                            Name = "Users",
-                            NormalizedName = "USERS"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

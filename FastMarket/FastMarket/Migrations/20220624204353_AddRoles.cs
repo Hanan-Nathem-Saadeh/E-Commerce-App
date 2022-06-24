@@ -2,7 +2,7 @@
 
 namespace FastMarket.Migrations
 {
-    public partial class SeedRoles : Migration
+    public partial class AddRoles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
