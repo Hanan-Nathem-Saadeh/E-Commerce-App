@@ -1,6 +1,6 @@
 ﻿@page
-@using FastMarket.Models
-@model IList<Product>
+@*@using FastMarket.Models*@
+@*@model IList<Product>*@
 @using Microsoft.AspNetCore.Identity
 @using FastMarket.Auth.Models
 @inject SignInManager<ApplicationUser> SignInMngr;
@@ -13,7 +13,6 @@
 <br />
 @*
 @{
-
     if (SignInMngr.IsSignedIn(User))
     {
         <h1> with in your Cart @User.Identity.Name </h1>
@@ -25,4 +24,3 @@
 }
 *@
 @await Component.InvokeAsync("Summery")
-         

@@ -9,10 +9,10 @@ namespace FastMarket.Components
     public class SummeryViewComponent : ViewComponent
     {
         [BindProperty]
-        public IList<Product> ListProduct { get; set; }
+        public List<Product> ListProduct { get; set; }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
+            
             ListProduct = JsonConvert.DeserializeObject<List<Product>>
                       (HttpContext.Request.Cookies["ProductObject"]);   
             return View(ListProduct);

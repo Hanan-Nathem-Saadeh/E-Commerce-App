@@ -2,14 +2,14 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
-@model FastMarket.Components.SummeryViewComponent
+@model List<FastMarket.Models.Product>
 
 <br />
 <br />
 <h1> Summary of my purchase : </h1>
 
 <br />
-@foreach (Product product in  @Model.ListProduct)
+@foreach (Product product in  @Model)
 {
     <img src = "@product.ImageUri" width = 100/> 
          <br />
