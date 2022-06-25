@@ -25,11 +25,11 @@ namespace FastMarket.Pages.CategPage
         [BindProperty]
         public IList<Product> ListProduct { get; set; }
         
-        public async Task OnGet(int id)
+        public async Task OnGetAsync(int id)
         {
             product = await _Product.GetProduct(id);
         }
-        public async void OnPost (Product product)
+        public async void OnPostAsync (Product product)
         {
 
             if (HttpContext.Request.Cookies["ProductObject"] != null)
@@ -49,7 +49,7 @@ namespace FastMarket.Pages.CategPage
             HttpContext.Response.Cookies.Append("Count", ListProduct.Count.ToString(), cookieOptions);
             HttpContext.Response.Cookies.Append("ProductObject", JsonFile, cookieOptions);
             // await OnGet(product.Id);
-           // await Page();
+             Page();
         }
 
     }

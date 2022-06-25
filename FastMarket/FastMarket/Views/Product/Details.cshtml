@@ -1,20 +1,37 @@
 ﻿@model FastMarket.Models.Product
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<h1>
-    Add new Product <a asp-controller="Product" asp-action="addproductView"> here </a>
-</h1>
+
+    <a class="btn btn-primary btn-lg " asp-controller="Product" asp-action="addproductView"> Add new Product </a>
 <br />
- <img src ="@Model.ImageUri" width = 200 />
- <br />
-<h1> Name : @Model.Name </h1>
-<br />
-<h2>Description : @Model.Description</h2>
-<br />
-<h2>Price : @Model.Price</h2>
 
-<a asp-controller="Product" asp-action="Update" asp-route-id=@Model.Id>update</a>
-<a asp-controller="Product" asp-action="DeleteProduct" asp-route-id=@Model.Id > delete </a>
+@*//// To fromat tha product data as bootstrap card*@
+<section style="background-color: #eee;">
+    <div class="card mb-3" style="max-width: 450px;">
+        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+             data-mdb-ripple-color="light">
+            <img src=@Model.ImageUri
+                 class="w-100" />
+            <a href="#!">
+                <div class="mask">
+                    <div class="d-flex justify-content-start align-items-end h-100"></div>
+                </div>
+                <div class="hover-overlay">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </div>
+            </a>
+        </div>
+        <div class="card-body">
+
+            <h5 class="card-title mb-3">@Model.Name</h5>
+            <h5 class="card-title mb-3">@Model.Price</h5>
+
+            <h6 class="mb-3">@Model.Description</h6>
 
 
+            <a class="btn btn-primary btn-lg " asp-controller="Product" asp-action="Update" asp-route-id=@Model.Id>update</a>
+            <a class="btn btn-primary btn-lg " asp-controller="Product" asp-action="DeleteProduct" asp-route-id=@Model.Id> delete </a>
 
+        </div>
+    </div>
+</section>
