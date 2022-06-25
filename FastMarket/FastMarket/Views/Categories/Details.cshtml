@@ -1,35 +1,66 @@
 ﻿@model FastMarket.Models.Categories
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-  <a asp-controller = "Categories" asp-action= "Add"> Create New Category</a>
-     <br />
+<a asp-controller="Categories" asp-action="Add"> Create New Category</a>
+<br />
 
 
-    <h1>Name : @Model.Name </h1>
-    <br />
-    <h1>Details : @Model.Details </h1>
-    <br />
 
 
-   <a asp-controller = "Categories" asp-action= "Edit" asp-route-id ="@Model.Id" > Edit</a>
-   <a asp-controller = "Categories" asp-action= "DeleteCategory" asp-route-id ="@Model.Id" > Delete</a>
-
-   <a asp-controller = "Categories" asp-action= "AddProductToCategories" asp-route-CategoryId = "@Model.Id">  Add Product To Category</a>
 
 
-    @foreach (var item in Model.categoriesProducts)
-   {
-       <img src = "@item.Product.ImageUri" width = 100/> 
-       <br />
-       <h3>Name : @item.Product.Name</h3>
-       <h3> Description : @item.Product.Description</h3>
-       <h3> Price : @item.Product.Price</h3>
-       <br />
-              <a asp-controller="Product" asp-action="Update" asp-route-id=@item.ProductId>update Product</a>
-                <a asp-controller="Product" asp-action="DeleteProduct" asp-route-id=@item.ProductId > delete Product </a>
-       <hr style="height:2px;width:400px;border-width:1px;">
+<h1> @Model.Name </h1>
+
+<a class="btn btn-warning btn-lg" asp-controller="Categories" asp-action="Edit" asp-route-id="@Model.Id"> Edit</a>
+
+<a class="btn btn-danger btn-lg" asp-controller="Categories" asp-action="DeleteCategory" asp-route-id="@Model.Id"> Delete</a>
+<a class="btn btn-primary btn-lg" asp-controller="Categories" asp-action="AddProductToCategories" asp-route-CategoryId="@Model.Id">  Add Product To Category</a>
 
 
-   }
-    <hr />
-    
+<br />
+
+
+<section style="background-color: #eee;">
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5"><strong>Product List</strong></h4>
+
+        <div class="row">
+            @foreach (var item in Model.categoriesProducts)
+            {
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                             data-mdb-ripple-color="light">
+                            <img src="@item.Product.ImageUri"
+                                 class="w-100" />
+                            <a href="#!">
+                                <div class="mask">
+                                    <div class="d-flex justify-content-start align-items-end h-100"></div>
+                                </div>
+                                <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+
+                            <h5 class="card-title mb-3">@item.Product.Name</h5>
+                            <h5 class="card-title mb-3">@item.Product.Price</h5>
+
+                            <h6 class="mb-3">@item.Product.Description</h6>
+                             <a class="btn btn-primary btn-lg" asp-page="/CategPage/ProductDetails" asp-route-id=@item.Product.Id> Product Details </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+    </div>
+</section>
+
+

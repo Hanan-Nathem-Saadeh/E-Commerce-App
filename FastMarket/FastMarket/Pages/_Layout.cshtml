@@ -1,4 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@using FastMarket.Auth.Models
+@inject SignInManager<ApplicationUser> SignInMngr;
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,45 +20,80 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Home </a>
-              <a asp-area="" asp-page="/CartCookie/Index" class="navbar-brand"> Cart </a>
-              <a asp-area="" asp-page="/cartDetails/Index" class="navbar-brand"> Cart Summery  </a>
-              <a asp-area="" asp-page="/Email/Index" class="navbar-brand"> Send Email </a>
-           @await Component.InvokeAsync("Cart")
-          
-         
-       
-                @*
-                     @await Component.InvokeAsync("Summery")
-                   @await Component.InvokeAsync("Count")
-                @{   var count1 = 0;
-                        if (HttpContext.Request.Cookies["Count"] != null)
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <div class="navbar-nav">
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Navbar brand -->
+                    <!-- Left links -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+
+                            <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                                <img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg"
+                                     height="25"
+                                     alt="MDB Logo"
+                                     loading="lazy" />
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-page="/Email/Index" class="navbar-brand"> Send Email </a>
+                        </li>
+                    </ul>
+                    <!-- Left links -->
+                </div>
+                <!-- Collapsible wrapper -->
+                <!-- Right elements -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    @if(SignInMngr.IsSignedIn(User))
+                    {
+                        <li class="nav-item">
+                            <!-- Notifications Summery -->
+                            @await Component.InvokeAsync("Summery")
+                        </li>
+                        <!-- SignInMngr -->
+
+                        @*<div class="d-flex align-items-center">*@
+
+                        <li class="nav-item">
+
+                            <h3>User:@User.Identity.Name </h3>
+                        </li>
+                        <li class="nav-item">
+
+                            <form asp-controller="Auth" asp-action="LogOut" method="post"> <button class="btn btn-warning btn-lg " style="width : 100px" type="submit">Logout</button></form>
+                        </li>
+                        }
+                        else
                         {
-                            count1= int.Parse( HttpContext.Request.Cookies["Count"]);         
+                        <li class="nav-item">
+
+                            <a asp-controller="Auth" asp-action="Index">  <button class="btn btn-primary btn-lg " style="width : 100px">Log In</button> </a>
+                            <a asp-controller="Auth" asp-action="SignUp"> <button class="btn btn-primary btn-lg " style="width : 100px">Sign Up</button></a>
+                        </li>
                         }
-                        }
-                <a> Count : @count1 </a>
-                *@
-            </div>
-            <div class="navbar-collapse collapse">
-            </div>
+                  </ul>
+        </div>
+        <!-- Right elements -->
         </div>
     </nav>
+
+
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />

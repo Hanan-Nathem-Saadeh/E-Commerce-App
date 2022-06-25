@@ -1,56 +1,58 @@
 ﻿@page
 @model FastMarket.Pages.CategPage.ProductDetailsModel
+@using Microsoft.AspNetCore.Identity
+@using FastMarket.Auth.Models
+@inject SignInManager<ApplicationUser> SignInMngr;
 @{
     ViewBag.titel = "Product Details";
 }
 
 
-
+@*//// To fromat tha product data as bootstrap card*@
 <section style="background-color: #eee;">
-  <div class="text-center container py-5">
-    <h4 class="mt-4 mb-5"><strong>Product List</strong></h4>
-
-    <div class="row"> 
-
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card">
-          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-            data-mdb-ripple-color="light">
-            <img src="@Model.product.ImageUri"
-              class="w-100" />
+    <div class="card mb-3" style="max-width: 450px;">
+        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+             data-mdb-ripple-color="light">
+            <img src=@Model.product.ImageUri
+                 class="w-100" />
             <a href="#!">
-              <div class="mask">
-                <div class="d-flex justify-content-start align-items-end h-100"></div>
-              </div>
-              <div class="hover-overlay">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-              </div>
+                <div class="mask">
+                    <div class="d-flex justify-content-start align-items-end h-100"></div>
+                </div>
+                <div class="hover-overlay">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </div>
             </a>
-          </div>
-          <div class="card-body">
-           
-              <h5 class="card-title mb-3">@Model.product.Name</h5>
-              <h5 class="card-title mb-3">@Model.product.Price</h5>
-          
+        </div>
+        <div class="card-body">
+
+            <h5 class="card-title mb-3">@Model.product.Name</h5>
+            <h5 class="card-title mb-3">@Model.product.Price</h5>
+
             <h6 class="mb-3">@Model.product.Description</h6>
 
-     <a asp-page="/CategPage/ProductDetails" asp-route-id=@Model.product.Id> Product Details </a>
-          </div>
+
+            @*///To add product to cart*@
+            @if (SignInMngr.IsSignedIn(User))
+            {
+                <form method="post">
+                    <input hidden asp-for="@Model.product.Id" value=@Model.product.Id />
+
+                    <input hidden asp-for="@Model.product.Name" value=@Model.product.Name />
+                    <input hidden asp-for="@Model.product.Description" value=@Model.product.Description />
+                    <input hidden asp-for="@Model.product.Price" value=@Model.product.Price />
+                    <input hidden asp-for="@Model.product.ImageUri" value=@Model.product.ImageUri />
+                    <button class="btn btn-warning btn-lg ms-2" type="submit"> Add To Cart  </button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Auth" asp-action="Index">  <button class="btn btn-primary btn-lg ">please Log In to continue</button> </a>
+
+            }
         </div>
-      </div>
+    </div>
+</section>
 
 
-        </div>
-        </div>
-        </section>
-
-   <form method="post" >
-              <input hidden asp-for ="@Model.product.Id" value=@Model.product.Id  />
-
-       <input hidden asp-for ="@Model.product.Name" value=@Model.product.Name  />
-       <input hidden asp-for ="@Model.product.Description" value=@Model.product.Description  />
-       <input hidden asp-for ="@Model.product.Price" value=@Model.product.Price  />
-       <input hidden asp-for ="@Model.product.ImageUri" value=@Model.product.ImageUri />
-       <button type="submit" > Add To Cart  </button>
-   </form>
-    <hr style="height:2px;width:400px;border-width:1px;">
+<hr style="height:2px;width:400px;border-width:1px;">

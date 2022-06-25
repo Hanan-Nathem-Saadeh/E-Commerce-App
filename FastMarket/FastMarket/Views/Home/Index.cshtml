@@ -2,21 +2,25 @@
 @{
     Layout = "_Layout";
 }
-<img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg"  width=400 alt="Logo" />
+<div class="text-center container py-5">
 
-<img src="https://faststorestorage.blob.core.windows.net/images/Logo.jpg" width=150 alt="Logo" />
-</br>
+    <img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg" width=400 alt="Logo" />
 
-</br>
+    <img src="https://faststorestorage.blob.core.windows.net/images/Logo.jpg" width=150 alt="Logo" />
+    </br>
 
-<a class="btn btn-success" asp-controller="Categories" asp-action="Index"> <button>Category</button> </a>
-<a asp-controller="Product" asp-action="Index"> <button>All Products</button></a>
+    </br>
 
-</br>
+    <a asp-controller="Categories" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2">Category</button> </a>
+    <a asp-controller="Product" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2">All Products</button></a>
+    </br>
 
-</br>
+    </br>
 
-</br>
+    </br>
 
 
-<a asp-page="/CategPage/Index"> <button style="width : 200px">Category in razor pages</button> </a>
+    <a asp-page="/CategPage/Index"> <button class="btn btn-primary btn-lg" style="width : 200px">Category </button> </a>
+    <a asp-page="/ProductPages/Index"> <button class="btn btn-primary btn-lg" style="width : 200px">All Products</button> </a>
+
+</div>
