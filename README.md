@@ -49,6 +49,13 @@ This is an e-commerse website build for selling of any products online. In this 
 ## ERD Diagram
 ![](./img/ERD.drawio.png)
 
+## Explanation of Tables:
+
+- Category Table : contains Name and Details Properties.
+- Product Table : contains Name, Price,Description and amountProperties.
+- Cart Table : contains total prica and count.
+
+
 ## WireFrames
 
 **Sign Up**
