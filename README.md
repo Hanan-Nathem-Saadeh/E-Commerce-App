@@ -6,6 +6,19 @@ This is an e-commerse website build for selling of any products online. In this 
 
 [Fast Market](https://fastmarket20220626025535.azurewebsites.net/)
 
+## product we are selling
+1- Clothes
+![](./img/clothes.png)
+2- Mobiles
+![](./img/mobiles.png)
+3- Computers
+![](./img/Computers.png)
+4- Furniture
+![](./img/furniture.png)
+5- Beauty
+![](./img/beauty.png)
+
+
 #|Title
 ---|-----
 1|[ER Diagram](#erd-diagram)
