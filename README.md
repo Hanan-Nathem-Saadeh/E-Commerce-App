@@ -1,6 +1,9 @@
-# E-Commerce-App
+# Fast Market
 
-FastMarket it's an e-commerce program that is a general program can the owner customize the online market by adding the logo and the name for their market, in this way our program can use for all my business Market on the internet.
+This is an e-commerse website build for selling of any products online. In this project we have mainly considered to adding the products to the users cart to bye or delete from the cart. The users can increase or decrease the items amount in the cart. After that the user may pay and get the order successful. The Project also uses the mail facilities to the users.
+
+# Live Link to our project
+[](https://fastmarket20220626025535.azurewebsites.net/)
 
 #|Title
 ---|-----
