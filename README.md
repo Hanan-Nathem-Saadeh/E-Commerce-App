@@ -4,7 +4,8 @@ This is an e-commerse website build for selling of any products online. In this 
 
 # Live Link to our project
 
-([linkurl](https://fastmarket20220626025535.azurewebsites.net/)
+[Fast Market](https://fastmarket20220626025535.azurewebsites.net/)
+
 #|Title
 ---|-----
 1|[ER Diagram](#erd-diagram)
