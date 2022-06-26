@@ -5,7 +5,9 @@ This is an e-commerse website build for selling of any products online. In this 
 # Name of Contributors:
 - Fuad Bassam
 - Hanan Nathem Saadeh
-- 
+
+---
+
 #|Title
 ---|-----
 1|[ER Diagram](#erd-diagram)
