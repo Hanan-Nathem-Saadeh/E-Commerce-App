@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FastMarket.Components
 {
+    // this component (Cart) having count the elements in the cart
     //[ViewComponent(Name ="CartComponent")]
     public class CartViewComponent : ViewComponent
     {

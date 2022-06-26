@@ -27,13 +27,15 @@ namespace FastMarket.Controllers
             return View();
         }
 
+        // call regester service to sign up then if succeed go to home
         [HttpPost]
         public async Task<ActionResult<UserDto>> SignUp(RegisterDto register)
         {
             var user = await userService.Register(register, this.ModelState);
             if (ModelState.IsValid)
             {
-                return Redirect("/");
+                return Redirect("Index");
+                
             }
             else
             {
@@ -42,6 +44,7 @@ namespace FastMarket.Controllers
             }
            
         }
+        // call Authenticate service to login then if succeed go to home
 
         public async Task<ActionResult<UserDto>> Authenticate(LoginDTO login)
         {
@@ -60,6 +63,8 @@ namespace FastMarket.Controllers
             }
             
         }
+        // call LogOut service to LogOut then go to home
+
         [HttpPost]
         public async Task<IActionResult> LogOut()
         {

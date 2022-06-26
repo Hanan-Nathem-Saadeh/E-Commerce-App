@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FastMarket.Migrations
 {
-    public partial class seedData : Migration
+    public partial class SeedingData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -256,8 +256,7 @@ namespace FastMarket.Migrations
                     { 2, "Clothes Category contain multiple product like jeens,T-shirt,dress....", "Clothes" },
                     { 3, "Mobiles Category contain multiple product like IPhones,Samsung,Nokia....", "Mobiles" },
                     { 4, "Computers & accessories Category contain multiple product like PC,Labtop,Headphones....", "Computers & accessories" },
-                    { 5, "TV & Home Entertainmen Category contain multiple product like DishTV HD,Samsung TV, LG", "TV & Home Entertainment" },
-                    { 6, "Furniture Category contain multiple product like Beds ,Beds Covers, Sofa", "Furniture" }
+                    { 5, "Furniture Category contain multiple product like Beds ,Beds Covers, Sofa", "Furniture" }
                 });
 
             migrationBuilder.InsertData(
@@ -265,16 +264,26 @@ namespace FastMarket.Migrations
                 columns: new[] { "Id", "Amount", "Description", "ImageUri", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, 150, "Maybelline New York Colossal Bold Liner & Colossal Kajal - EYE KIT COMBO (Pack Of 2), 0.35 gm + 3 ml", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Liner & Colossal Kajal", 15.5m },
-                    { 2, 120, "URBANMAC Premium Synthetic Kabuki Foundation Face Powder Blush Eyeshadow Brush Makeup Brush Kit with Blender Sponge and Brush Cleaner - Makeup Brushes Set", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Blushes", 20.00m },
-                    { 3, 250, "Coloressence Full Coverage Waterproof Lightweight Matte Formula Opaque Lotion High Definition Foundation (HDF-2) with Set of 2 Blending Sponge", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Foundation ", 50.00m },
-                    { 4, 60, "Wiffy Concealer Base Palette 15 In 1 Cream Kit Concealer", null, "Concealer ", 35.00m },
-                    { 5, 30, "Description1", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Product1", 100m },
-                    { 6, 40, "Description2", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Product2", 350m },
-                    { 7, 50, "Description3", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Product3", 200m },
-                    { 8, 60, "Description4", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Product4", 230m },
-                    { 9, 70, "Description5", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Product5", 105m },
-                    { 10, 70, "Description10", "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png", "Product10", 105m }
+                    { 18, 50, "YITAHOME 6 Pieces Patio Furniture Set, Outdoor Conversation Set, Outside Sectional Sofa PE Rattan Wicker Set with Table and Cushion for Porch Lawn Garden and Poolside, Gray Gradient", "https://faststorestorage.blob.core.windows.net/images/R(18).jpg", "YITAHOME 6 Pieces Patio Furniture Set", 456m },
+                    { 17, 50, "HP Chromebook 14-inch HD Touchscreen Laptop, Intel Celeron N4000, 4 GB RAM, 32 GB eMMC, Chrome (14a-na0080nr, Forest Teal)", "https://faststorestorage.blob.core.windows.net/images/R(17).jpg", "HP Chromebook 14-inch HD Touchscreen Laptop", 734m },
+                    { 16, 50, "New Microsoft Surface Go 2 - 10.5 Touch-Screen - Intel Pentium - 4GB Memory - 64GB - Wifi - Platinum (Latest Model)", "https://faststorestorage.blob.core.windows.net/images/R(16).jpg", "Touch-Screen - Intel Pentium ", 345m },
+                    { 15, 50, "Newest HP Pavilion Business Laptop, 15.6 Full HD Display, 11th Gen Intel i7-1165G7(Up to 4.7GHz), 16GB RAM, 1TB PCIe SSD, Intel Iris Xe Graphics, Backlit KB, Fingerprint, Bluetooth, Windows 11 Pro", "https://faststorestorage.blob.core.windows.net/images/R(15).jpg", "Business Laptop", 200m },
+                    { 14, 50, "Nokia XR20 5G | Android 11 | Unlocked Smartphone | Dual SIM | US Version | 6/128GB | 6.67-Inch Screen | 48MP Dual Camera | Granite", "https://faststorestorage.blob.core.windows.net/images/R(14).jpg", "Nokia XR20 5G", 432m },
+                    { 13, 50, "SAMSUNG Galaxy S22 Cell Phone, Factory Unlocked Android Smartphone, 256GB, 8K Camera & Video, Brightest Display Screen, Long Battery Life, Fast 4nm Processor, US Version, Green", "https://faststorestorage.blob.core.windows.net/images/R(13).jpg", "SAMSUNG Galaxy S22", 543m },
+                    { 12, 50, "Apple iPhone 13 Pro Max (256 GB, Alpine Green) [Locked] + Carrier Subscription", "https://faststorestorage.blob.core.windows.net/images/R(12).jpg", "Apple iPhone 13 Pro Max ", 333m },
+                    { 11, 50, "5 Pack Men’s Active Quick Dry Crew Neck T Shirts | Athletic Running Gym Workout Short Sleeve Tee Tops Bulk", "https://faststorestorage.blob.core.windows.net/images/R(11).jpg", "T Shirts", 418m },
+                    { 10, 50, "Muslim Dresses for Women, One-Piece Long Sleeve Islamic Prayer Dress & Prayer Rug & Beads, Islamic Set", "https://faststorestorage.blob.core.windows.net/images/R(10).jpg", "Muslim Dresses for Women", 722m },
+                    { 8, 50, "Simple Joys by Carter's Girls and Toddlers' 4-Piece Pajama Set (Cotton Top & Fleece Bottom)", "https://faststorestorage.blob.core.windows.net/images/R(8).jpg", "Bejamas", 432m },
+                    { 19, 50, "LOKATSE HOME Outdoor 2 Piece Patio Chairs Conversation Set Metal Frame Furniture with Cushion, Blue", "https://faststorestorage.blob.core.windows.net/images/R(19).jpg", "Chairs Conversation Set Metal Frame Furniture", 254m },
+                    { 7, 50, "Makeup Remover Cleansing Face Wipes, Daily Cleansing Facial Towelettes to Remove Waterproof Makeup and Mascara, Alcohol-Free, Value Twin Pack, 25 Count", "https://faststorestorage.blob.core.windows.net/images/R(7).jpg", "Makeup Remover", 200m },
+                    { 6, 40, "BESTOPE PRO Premium Synthetic Contour Concealers Foundation Powder Eye Shadows Makeup Brushes with Champagne Gold Conical Handle, 20 Count", "https://faststorestorage.blob.core.windows.net/images/R(6).jpg", "Brushes ", 350m },
+                    { 5, 30, "UCANBE 18 Colors Aromas Nude Eyeshadow Palette Long Lasting Multi Reflective Shimmer Matte Glitter Pressed Pearls Eye Shadow Makeup Pallet", "https://faststorestorage.blob.core.windows.net/images/R(1).jpg", "Eyeshadow", 100m },
+                    { 4, 60, "Wiffy Concealer Base Palette 15 In 1 Cream Kit Concealer", "https://faststorestorage.blob.core.windows.net/images/R(4).jpg", "Concealer ", 35.00m },
+                    { 3, 250, "Coloressence Full Coverage Waterproof Lightweight Matte Formula Opaque Lotion High Definition Foundation (HDF-2) with Set of 2 Blending Sponge", "https://faststorestorage.blob.core.windows.net/images/R(3).jpg", "Foundation ", 50.00m },
+                    { 2, 120, "URBANMAC Premium Synthetic Kabuki Foundation Face Powder Blush Eyeshadow Brush Makeup Brush Kit with Blender Sponge and Brush Cleaner - Makeup Brushes Set", "https://faststorestorage.blob.core.windows.net/images/R(5).jpg", "Blushes", 20.00m },
+                    { 1, 150, "Maybelline New York Colossal Bold Liner & Colossal Kajal - EYE KIT COMBO (Pack Of 2), 0.35 gm + 3 ml", "https://faststorestorage.blob.core.windows.net/images/R.jpg", "Liner & Colossal Kajal", 15.5m },
+                    { 9, 50, "Moon and Back by Hanna Andersson Kids' Organic Holiday Family Matching 2 Piece Pajama Set", "https://faststorestorage.blob.core.windows.net/images/R(9).jpg", "2 Piece Pajama Set", 321m },
+                    { 20, 50, "DHP Dakota Upholstered Platform Bed with Underbed Storage Drawers and Diamond Button Tufted Headboard and Footboard, No Box Spring Needed, Queen, White Faux Leather", "https://faststorestorage.blob.core.windows.net/images/R(20).jpg", "Bed", 512m }
                 });
 
             migrationBuilder.InsertData(
@@ -283,15 +292,25 @@ namespace FastMarket.Migrations
                 values: new object[,]
                 {
                     { 1, 1 },
-                    { 1, 2 },
+                    { 5, 18 },
+                    { 4, 17 },
+                    { 4, 16 },
+                    { 4, 15 },
+                    { 3, 14 },
+                    { 3, 13 },
+                    { 3, 12 },
+                    { 2, 11 },
+                    { 2, 10 },
+                    { 2, 9 },
+                    { 2, 8 },
+                    { 1, 7 },
+                    { 1, 6 },
+                    { 1, 5 },
+                    { 1, 4 },
                     { 1, 3 },
-                    { 2, 4 },
-                    { 2, 5 },
-                    { 3, 6 },
-                    { 3, 7 },
-                    { 4, 8 },
-                    { 4, 9 },
-                    { 5, 10 }
+                    { 1, 2 },
+                    { 5, 19 },
+                    { 5, 20 }
                 });
 
             migrationBuilder.CreateIndex(

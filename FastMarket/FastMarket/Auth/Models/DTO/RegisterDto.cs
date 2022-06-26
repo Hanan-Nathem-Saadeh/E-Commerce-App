@@ -5,7 +5,7 @@ namespace FastMarket.Auth.Models.DTO
     public class RegisterDto
     {
         
-        
+        // Regesteration DTO (username,password,email are required)
             [Required(ErrorMessage = "You have missed to fill the username")]
             [Display(Name = "User Name")]
             [MinLength(3)]

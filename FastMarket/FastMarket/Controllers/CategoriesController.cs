@@ -20,12 +20,14 @@ namespace FastMarket.Controllers
         {
             _Categories = Categories;
         }
+        // to get all Categories
         public async Task<IActionResult> Index()
         {
             var list1 = await _Categories.GetCategories();
 
             return View(list1);
         }
+        // to get specific Category
         public async Task<IActionResult> Details(int id)
         {
             var category = await _Categories.GetCategory(id);
@@ -34,19 +36,22 @@ namespace FastMarket.Controllers
 
             return View(category);
         }
-        [Authorize(Roles = "Editor")]
+
+        [Authorize(Roles = "Administrator,Editor ")]
         public async Task<IActionResult> Edit(int id)
         {
             Categories category = await _Categories.GetCategory(id);
             return View(category);
         }
+        // to update the Category
+
         [HttpPost]
         public async Task<IActionResult> Edit(Categories category)
         {     
             if (ModelState.IsValid)
             {
                 Categories categories = await _Categories.UpdateCategories(category.Id, category);
-                return Content("Updated Successfully :) ");
+                return RedirectToAction("Index", "Categories");
             }
             else
             {
@@ -59,27 +64,34 @@ namespace FastMarket.Controllers
         {
              return View();
         }
+        // to Add new  Category
+
         [HttpPost]
         public async Task<IActionResult> Add(Categories category)
         {
             if (ModelState.IsValid)
             {
                await _Categories.Create(category);
-                return Content("Add new Category Successfully ... :)");
+                ViewBag.ThankMessage = $"Add {category.Name} successfully :)  ";
+                    return RedirectToAction("Index", "Categories");
+
             }
             else
             {
                 return View(category);
             }
         }
+        // to Delete the Category
+
         [Authorize(Roles = "Administrator ")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             await _Categories.Delete(id);
-            return Content("Delete done");
+            return RedirectToAction("Index", "Categories");
         }
-        // [Authorize(Roles = "Administrator,Editor ")]
-        [Authorize(Roles = "Editor")]
+
+
+        [Authorize(Roles = "Administrator,Editor ")]
         public IActionResult AddProductToCategories(int CategoryId)
         {
             CategoriesProduct categoryProduct = new CategoriesProduct()
@@ -88,6 +100,7 @@ namespace FastMarket.Controllers
             };
             return View(categoryProduct);
         }
+        // To Add product to Category
 
         [HttpPost]
         public async Task<IActionResult> AddProductToCategories(CategoriesProduct categoryProduct , IFormFile file)
@@ -95,19 +108,21 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 await _Categories.AddProductToCategories(categoryProduct.CategoriesId,categoryProduct.Product,file);
-                return Content("Add Product to Category Done :)");
+                return RedirectToAction("Index", "Categories");
             }
             else
             {
                 return View(categoryProduct);
             }
         }
+        // To remove product from Category
+
         //[Authorize(Roles = "Administrator ,Editor")]
-        [Authorize(Roles = "Editor")]
+        [Authorize(Roles = "Administrator,Editor ")]
         public async Task<IActionResult> RemoveProductFromCategory(int CategoryId , int ProductId)
         {
             await _Categories.deleteProductFromCategories(CategoryId, ProductId );
-            return Content("Delete done");
+            return RedirectToAction("Index", "Categories");
         }
 
     }

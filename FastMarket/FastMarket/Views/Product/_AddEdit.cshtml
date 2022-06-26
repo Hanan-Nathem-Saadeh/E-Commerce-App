@@ -1,27 +1,31 @@
 ﻿@model FastMarket.Models.Product
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<label>
-    Name :
-    <input asp-for="@Model.Name" />
-</label>
-<br />
-<label>
-    Price :
-    <input asp-for="@Model.Price" />
-</label>
-<br />
-<label>
-    Description :
-    <input asp-for="@Model.Description" />
-</label>
-<br />
-<label>
-    Amount :
-    <input asp-for="@Model.Amount" />
-</label>
-<br />
-<label>
-    Image :
-    <input type="file" name ="file" />
-</label>
+
+     <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Product Name</label>
+
+      <input  asp-for="@Model.Name" type="text"  class="form-control form-control-lg" />
+          </div>
+   <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Price </label>
+
+      <input  asp-for="@Model.Price" type="number"  class="form-control form-control-lg" />
+          </div>
+  <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Description </label>
+
+      <input  asp-for="@Model.Description" type="text"  class="form-control form-control-lg" />
+          </div>
+  <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Amount </label>
+
+      <input  asp-for="@Model.Amount" type="number"  class="form-control form-control-lg" />
+          </div>
+
+<div class="form-group">
+    <label for="exampleFormControlFile1">Image</label>
+    <input type="file" name ="file"  class="form-control-file" id="exampleFormControlFile1">
+  </div>
+
+

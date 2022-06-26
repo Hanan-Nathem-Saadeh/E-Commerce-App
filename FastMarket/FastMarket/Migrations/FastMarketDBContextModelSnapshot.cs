@@ -168,12 +168,6 @@ namespace FastMarket.Migrations
                         new
                         {
                             Id = 5,
-                            Details = "TV & Home Entertainmen Category contain multiple product like DishTV HD,Samsung TV, LG",
-                            Name = "TV & Home Entertainment"
-                        },
-                        new
-                        {
-                            Id = 6,
                             Details = "Furniture Category contain multiple product like Beds ,Beds Covers, Sofa",
                             Name = "Furniture"
                         });
@@ -211,38 +205,88 @@ namespace FastMarket.Migrations
                         },
                         new
                         {
-                            CategoriesId = 2,
+                            CategoriesId = 1,
                             ProductId = 4
                         },
                         new
                         {
-                            CategoriesId = 2,
+                            CategoriesId = 1,
                             ProductId = 5
                         },
                         new
                         {
-                            CategoriesId = 3,
+                            CategoriesId = 1,
                             ProductId = 6
                         },
                         new
                         {
-                            CategoriesId = 3,
+                            CategoriesId = 1,
                             ProductId = 7
                         },
                         new
                         {
-                            CategoriesId = 4,
+                            CategoriesId = 2,
                             ProductId = 8
                         },
                         new
                         {
-                            CategoriesId = 4,
+                            CategoriesId = 2,
                             ProductId = 9
                         },
                         new
                         {
-                            CategoriesId = 5,
+                            CategoriesId = 2,
                             ProductId = 10
+                        },
+                        new
+                        {
+                            CategoriesId = 2,
+                            ProductId = 11
+                        },
+                        new
+                        {
+                            CategoriesId = 3,
+                            ProductId = 12
+                        },
+                        new
+                        {
+                            CategoriesId = 3,
+                            ProductId = 13
+                        },
+                        new
+                        {
+                            CategoriesId = 3,
+                            ProductId = 14
+                        },
+                        new
+                        {
+                            CategoriesId = 4,
+                            ProductId = 15
+                        },
+                        new
+                        {
+                            CategoriesId = 4,
+                            ProductId = 16
+                        },
+                        new
+                        {
+                            CategoriesId = 4,
+                            ProductId = 17
+                        },
+                        new
+                        {
+                            CategoriesId = 5,
+                            ProductId = 18
+                        },
+                        new
+                        {
+                            CategoriesId = 5,
+                            ProductId = 19
+                        },
+                        new
+                        {
+                            CategoriesId = 5,
+                            ProductId = 20
                         });
                 });
 
@@ -279,7 +323,7 @@ namespace FastMarket.Migrations
                             Id = 1,
                             Amount = 150,
                             Description = "Maybelline New York Colossal Bold Liner & Colossal Kajal - EYE KIT COMBO (Pack Of 2), 0.35 gm + 3 ml",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R.jpg",
                             Name = "Liner & Colossal Kajal",
                             Price = 15.5m
                         },
@@ -288,7 +332,7 @@ namespace FastMarket.Migrations
                             Id = 2,
                             Amount = 120,
                             Description = "URBANMAC Premium Synthetic Kabuki Foundation Face Powder Blush Eyeshadow Brush Makeup Brush Kit with Blender Sponge and Brush Cleaner - Makeup Brushes Set",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(5).jpg",
                             Name = "Blushes",
                             Price = 20.00m
                         },
@@ -297,7 +341,7 @@ namespace FastMarket.Migrations
                             Id = 3,
                             Amount = 250,
                             Description = "Coloressence Full Coverage Waterproof Lightweight Matte Formula Opaque Lotion High Definition Foundation (HDF-2) with Set of 2 Blending Sponge",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(3).jpg",
                             Name = "Foundation ",
                             Price = 50.00m
                         },
@@ -306,6 +350,7 @@ namespace FastMarket.Migrations
                             Id = 4,
                             Amount = 60,
                             Description = "Wiffy Concealer Base Palette 15 In 1 Cream Kit Concealer",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(4).jpg",
                             Name = "Concealer ",
                             Price = 35.00m
                         },
@@ -313,55 +358,145 @@ namespace FastMarket.Migrations
                         {
                             Id = 5,
                             Amount = 30,
-                            Description = "Description1",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
-                            Name = "Product1",
+                            Description = "UCANBE 18 Colors Aromas Nude Eyeshadow Palette Long Lasting Multi Reflective Shimmer Matte Glitter Pressed Pearls Eye Shadow Makeup Pallet",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(1).jpg",
+                            Name = "Eyeshadow",
                             Price = 100m
                         },
                         new
                         {
                             Id = 6,
                             Amount = 40,
-                            Description = "Description2",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
-                            Name = "Product2",
+                            Description = "BESTOPE PRO Premium Synthetic Contour Concealers Foundation Powder Eye Shadows Makeup Brushes with Champagne Gold Conical Handle, 20 Count",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(6).jpg",
+                            Name = "Brushes ",
                             Price = 350m
                         },
                         new
                         {
                             Id = 7,
                             Amount = 50,
-                            Description = "Description3",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
-                            Name = "Product3",
+                            Description = "Makeup Remover Cleansing Face Wipes, Daily Cleansing Facial Towelettes to Remove Waterproof Makeup and Mascara, Alcohol-Free, Value Twin Pack, 25 Count",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(7).jpg",
+                            Name = "Makeup Remover",
                             Price = 200m
                         },
                         new
                         {
                             Id = 8,
-                            Amount = 60,
-                            Description = "Description4",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
-                            Name = "Product4",
-                            Price = 230m
+                            Amount = 50,
+                            Description = "Simple Joys by Carter's Girls and Toddlers' 4-Piece Pajama Set (Cotton Top & Fleece Bottom)",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(8).jpg",
+                            Name = "Bejamas",
+                            Price = 432m
                         },
                         new
                         {
                             Id = 9,
-                            Amount = 70,
-                            Description = "Description5",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
-                            Name = "Product5",
-                            Price = 105m
+                            Amount = 50,
+                            Description = "Moon and Back by Hanna Andersson Kids' Organic Holiday Family Matching 2 Piece Pajama Set",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(9).jpg",
+                            Name = "2 Piece Pajama Set",
+                            Price = 321m
                         },
                         new
                         {
                             Id = 10,
-                            Amount = 70,
-                            Description = "Description10",
-                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/DefaultIMG.png",
-                            Name = "Product10",
-                            Price = 105m
+                            Amount = 50,
+                            Description = "Muslim Dresses for Women, One-Piece Long Sleeve Islamic Prayer Dress & Prayer Rug & Beads, Islamic Set",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(10).jpg",
+                            Name = "Muslim Dresses for Women",
+                            Price = 722m
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Amount = 50,
+                            Description = "5 Pack Men’s Active Quick Dry Crew Neck T Shirts | Athletic Running Gym Workout Short Sleeve Tee Tops Bulk",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(11).jpg",
+                            Name = "T Shirts",
+                            Price = 418m
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Amount = 50,
+                            Description = "Apple iPhone 13 Pro Max (256 GB, Alpine Green) [Locked] + Carrier Subscription",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(12).jpg",
+                            Name = "Apple iPhone 13 Pro Max ",
+                            Price = 333m
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Amount = 50,
+                            Description = "SAMSUNG Galaxy S22 Cell Phone, Factory Unlocked Android Smartphone, 256GB, 8K Camera & Video, Brightest Display Screen, Long Battery Life, Fast 4nm Processor, US Version, Green",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(13).jpg",
+                            Name = "SAMSUNG Galaxy S22",
+                            Price = 543m
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Amount = 50,
+                            Description = "Nokia XR20 5G | Android 11 | Unlocked Smartphone | Dual SIM | US Version | 6/128GB | 6.67-Inch Screen | 48MP Dual Camera | Granite",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(14).jpg",
+                            Name = "Nokia XR20 5G",
+                            Price = 432m
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Amount = 50,
+                            Description = "Newest HP Pavilion Business Laptop, 15.6 Full HD Display, 11th Gen Intel i7-1165G7(Up to 4.7GHz), 16GB RAM, 1TB PCIe SSD, Intel Iris Xe Graphics, Backlit KB, Fingerprint, Bluetooth, Windows 11 Pro",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(15).jpg",
+                            Name = "Business Laptop",
+                            Price = 200m
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Amount = 50,
+                            Description = "New Microsoft Surface Go 2 - 10.5 Touch-Screen - Intel Pentium - 4GB Memory - 64GB - Wifi - Platinum (Latest Model)",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(16).jpg",
+                            Name = "Touch-Screen - Intel Pentium ",
+                            Price = 345m
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Amount = 50,
+                            Description = "HP Chromebook 14-inch HD Touchscreen Laptop, Intel Celeron N4000, 4 GB RAM, 32 GB eMMC, Chrome (14a-na0080nr, Forest Teal)",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(17).jpg",
+                            Name = "HP Chromebook 14-inch HD Touchscreen Laptop",
+                            Price = 734m
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Amount = 50,
+                            Description = "YITAHOME 6 Pieces Patio Furniture Set, Outdoor Conversation Set, Outside Sectional Sofa PE Rattan Wicker Set with Table and Cushion for Porch Lawn Garden and Poolside, Gray Gradient",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(18).jpg",
+                            Name = "YITAHOME 6 Pieces Patio Furniture Set",
+                            Price = 456m
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Amount = 50,
+                            Description = "LOKATSE HOME Outdoor 2 Piece Patio Chairs Conversation Set Metal Frame Furniture with Cushion, Blue",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(19).jpg",
+                            Name = "Chairs Conversation Set Metal Frame Furniture",
+                            Price = 254m
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Amount = 50,
+                            Description = "DHP Dakota Upholstered Platform Bed with Underbed Storage Drawers and Diamond Button Tufted Headboard and Footboard, No Box Spring Needed, Queen, White Faux Leather",
+                            ImageUri = "https://faststorestorage.blob.core.windows.net/images/R(20).jpg",
+                            Name = "Bed",
+                            Price = 512m
                         });
                 });
 

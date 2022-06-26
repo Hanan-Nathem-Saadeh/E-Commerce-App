@@ -21,6 +21,7 @@ namespace FastMarket.Models.Services
             _context = context;
             _configration = configration;
         }
+        // method to add a product to Category
 
         public async Task<Product> AddProductToCategories(int categoriesId, Product product,IFormFile file)
         {
@@ -42,6 +43,7 @@ namespace FastMarket.Models.Services
 
             return product;
         }
+        // method to create new Category
 
         public async Task<Categories> Create(Categories categories)
         {
@@ -49,6 +51,7 @@ namespace FastMarket.Models.Services
             await _context.SaveChangesAsync();
             return categories;
         }
+        // method to Delete a Category
 
         public async Task Delete(int id)
         {
@@ -63,6 +66,7 @@ namespace FastMarket.Models.Services
            
            
         }
+        // method to remove product from Category
 
         public async Task deleteProductFromCategories(int categoriesId, int productId)
         {
@@ -76,6 +80,7 @@ namespace FastMarket.Models.Services
             }
 
         }
+        // method to get all Categories
 
         public async Task<List<Categories>> GetCategories()
         {
@@ -86,6 +91,7 @@ namespace FastMarket.Models.Services
         {
              return await _context.Categories.Include(x => x.categoriesProducts).ThenInclude(y => y.Product).FirstOrDefaultAsync(z => z.Id == id);
         }
+        // method to update a Category
 
         public async Task<Categories> UpdateCategories(int id, Categories categories)
         {

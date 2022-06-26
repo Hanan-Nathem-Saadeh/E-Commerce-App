@@ -23,8 +23,7 @@
         <div class="card">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
             data-mdb-ripple-color="light">
-            <img src="@item.Product.ImageUri"
-              class="w-100" />
+            <img   src="@item.Product.ImageUri" style="height: 450px" class="img-fluid  mb-3 img-thumbnail shadow-sm" />
             <a href="#!">
               <div class="mask">
                 <div class="d-flex justify-content-start align-items-end h-100"></div>
@@ -42,7 +41,6 @@
             <h6 class="mb-3">@item.Product.Description</h6>
                              <a class="btn btn-primary btn-lg" asp-page="/CategPage/ProductDetails" asp-route-id=@item.Product.Id> Product Details </a> 
 
-     
           </div>
         </div>
       </div>

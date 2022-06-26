@@ -17,7 +17,7 @@ namespace FastMarket.Pages.CategPage
         {
             _categories = categories1;
         }
-
+        // to git and view all categories list
         public List<Categories> list1 { get; set; }
         public async Task OnGet()
         {

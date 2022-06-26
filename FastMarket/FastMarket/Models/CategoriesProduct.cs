@@ -1,5 +1,7 @@
 ﻿namespace FastMarket.Models
 {
+    // CategoriesProduct JoinTable Model
+
     public class CategoriesProduct
     {
         public int CategoriesId { get; set; }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FastMarket.Models
 {
+    // Product model
     public class Product
     {
         public int Id { get; set; }

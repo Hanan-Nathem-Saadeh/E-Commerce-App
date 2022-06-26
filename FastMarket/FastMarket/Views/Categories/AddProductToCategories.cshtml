@@ -2,29 +2,52 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
-<form asp-controller="Categories" asp-action = "AddProductToCategories" method ="post" enctype ="multipart/form-data">
+<section class="vh-100" style="background-color: #eee; >
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+<form asp-controller="Categories" asp-action = "AddProductToCategories" method ="post" enctype ="multipart/form-data" align="center">
     <input hidden asp-for="@Model.CategoriesId" />
-<label>
-    Name :
-    <input asp-for="@Model.Product.Name" />
-</label>
-<label>
-    Price :
-    <input asp-for="@Model.Product.Price" />
-</label>
-<label>
-    Description :
-    <input asp-for="@Model.Product.Description" />
-</label>
-<label>
-    Amount :
-    <input asp-for="@Model.Product.Amount" />
-</label>
-<label>
-    Image :
-    <input type="file" name ="file" />
-</label>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Name </label>
+
+      <input asp-for="@Model.Product.Name" type="text"  class="form-control form-control-lg" />
+          </div>
+           <div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Price </label>
+
+      <input  asp-for="@Model.Product.Price" type="number"  class="form-control form-control-lg" />
+          </div>
+<div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Description </label>
+
+      <input   asp-for="@Model.Product.Description" type="text"  class="form-control form-control-lg" />
+          </div>
+<div class="form-outline mb-4">
+      <label class="form-label" for="form3Example3"> Amount </label>
+
+      <input  asp-for="@Model.Product.Amount" type="number"  class="form-control form-control-lg" />
+          </div>
+<div class="form-group">
+    <label for="exampleFormControlFile1">Image</label>
+    <input type="file" name ="file"  class="form-control-file" id="exampleFormControlFile1">
+  </div>
+
     <button type="submit"> Add </button>
 
 </form>
+   </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div asp-validation-summary="All"></div>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace FastMarket.Models.Services
 {
+
     public class EmailService : IEmail
     {
 
@@ -22,6 +23,9 @@ namespace FastMarket.Models.Services
         //   // var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
         //   // return response.IsSuccessStatusCode;
         //}
+
+         // this method to ability sending emails to department and users after regesteration and checkout
+
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             SendGridClient client = new SendGridClient("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");

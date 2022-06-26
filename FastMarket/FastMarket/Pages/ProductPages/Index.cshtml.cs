@@ -11,6 +11,8 @@ namespace FastMarket.Pages.ProductPages
 {
     public class IndexModel : PageModel
     {
+
+        // this page to show all products (product list)
         private readonly IProduct _product;
 
         public IndexModel(IProduct product)

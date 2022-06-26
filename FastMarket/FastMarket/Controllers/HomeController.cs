@@ -8,6 +8,7 @@ namespace FastMarket.Controllers
 {
     public class HomeController : Controller
     {
+        // Home Page
         private readonly FastMarketDBContext _cotext;
 
         public HomeController(FastMarketDBContext cotext)
