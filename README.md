@@ -28,23 +28,23 @@ This is an e-commerse website build for selling of any products online. In this 
 
 ## Fast Market Features
 
-#|#|Features
+#|Title|Features
 ---|------|-------
-1|[Category]|(Ability to Add New Category)
-2|[Category](Ability to list Categories)
-3|[Category](Ability to Update Category)
-4|[Category](Ability to Delete Category)
-5|[Product](Ability to add new Products)
-6|[Product](Ability to List Products)
-7|[Product](Ability to update Products)
-8|[Product](Ability to delete Products)
-9|[Product](Ability to add Product to category)
-10|[Product](Ability to delete Product from category)
-11|[Cart](Create a Cart	)
-12|[Cart](Ability to see the Cart and it items)
-13|[Cart](Ability of add a new Product on the Cart)
-14|[Cart](Ability of Remove a product from the Cart)
-15|[Cart](An Email will be sent)
+1|Category|(Ability to Add New Category)
+2|Category|(Ability to list Categories)
+3|Category|(Ability to Update Category)
+4|Category|(Ability to Delete Category)
+5|Product|(Ability to add new Products)
+6|Product|(Ability to List Products)
+7|Product|(Ability to update Products)
+8|Product|(Ability to delete Products)
+9|Product|(Ability to add Product to category)
+10|Product|(Ability to delete Product from category)
+11|Cart|(Create a Cart	)
+12|Cart|(Ability to see the Cart and it items)
+13|Cart|(Ability of add a new Product on the Cart)
+14|Cart|(Ability of Remove a product from the Cart)
+15|Cart|(An Email will be sent)
 
 ## ERD Diagram
 ![](./img/ERD.drawio.png)
