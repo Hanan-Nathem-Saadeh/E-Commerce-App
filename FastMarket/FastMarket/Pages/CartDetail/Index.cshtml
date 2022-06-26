@@ -4,12 +4,13 @@
 }
 <br />
 <br />
-<br />
 @{if (@Model.Count != 0)
     {
         <h1 class="mt-4 mb-5"><strong>Cart</strong></h1>
-        <h1> Count : @Model.Count </h1>
-        
+        <h2> item in cart : @Model.Count </h2>
+        <h2> Total Price : @Model.TotalPrice </h2>
+
+
         <div class="text-center container py-5">
             <h4 class="mt-4 mb-5"><strong>Category List</strong></h4>
             <div class="row">
@@ -33,14 +34,15 @@
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Name : @item.Name</h5>
                                 <h6 class="mb-3">Price : @item.Price</h6>
-                                <a class="btn btn-primary btn-lg" asp-page="/CategPage/CategProduct" asp-route-id=@item.Id>Edit</a>
+                                <a class="btn btn-primary btn-lg" asp-page="/CartDetail/EditCartItem.cshtml" asp-route-id=@item.Id>Edit</a>
 
-                             <form method="post">
-                                    <input hidden asp-for="deletedProduct.Id" value=@item.Id />
-                                    <input hidden asp-for="deletedProduct.Name" value=@item.Name />
-                                    <input hidden asp-for="deletedProduct.Description" value=@item.Description />
-                                    <input hidden asp-for="deletedProduct.Price" value=@item.Price />
-                                    <input hidden asp-for="deletedProduct.ImageUri" value=@item.ImageUri />
+                                <form method="post">
+
+                                    <input hidden name="id" value=@item.Id />
+                                    @*<input hidden asp-for="@Model.ListProduct" value=@Model.ListProduct />
+                                                                    <input hidden asp-for="deletedProduct.Description" value=@item.Description />
+                                        <input hidden asp-for="deletedProduct.Price" value=@item.Price />
+                                        <input hidden asp-for="deletedProduct.ImageUri" value=@item.ImageUri />*@
                                     <button class="btn btn-danger btn-lg ms-2" type="submit"> Delete</button>
                                 </form>
                             </div>
@@ -48,6 +50,8 @@
                     </div>
                 }
             </div>
+            <a class="btn btn-warning btn-lg" asp-page="/CartDetail/checkout.cshtml">checkout</a>
+
         </div>
     }
     else
