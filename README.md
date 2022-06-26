@@ -2,6 +2,14 @@
 
 This is an e-commerse website build for selling of any products online. In this project we have mainly considered to adding the products to the users cart to bye or delete from the cart. The users can increase or decrease the items amount in the cart. After that the user may pay and get the order successful. The Project also uses the mail facilities to the users.
 
+
+#|Title
+---|-----
+1|[ER Diagram](#erd-diagram)
+2|[WireFrame](#wireframes)
+3|[WorkFlow](#workflow)
+
+
 # Live Link to our project
 
 [Fast Market](https://fastmarket20220626025535.azurewebsites.net/)
@@ -18,12 +26,6 @@ This is an e-commerse website build for selling of any products online. In this 
 5- Beauty
 ![](./img/beauty.png)
 
-
-#|Title
----|-----
-1|[ER Diagram](#erd-diagram)
-2|[WireFrame](#wireframes)
-3|[WorkFlow](#workflow)
 
 
 ## ERD Diagram
