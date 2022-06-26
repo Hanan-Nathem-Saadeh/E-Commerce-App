@@ -34,7 +34,7 @@ namespace FastMarket.Pages.Auth
 
         }
 
-
+        // call regester method from the service to sign up
         public async Task OnPostAsync(RegisterDto registerDto)
         {
 

@@ -18,7 +18,7 @@ namespace FastMarket.Pages.CategPage
         {
             _categories = categories1;
         }
-
+        // to get product inside this category
         public Categories categories { get; set; }
         public async Task OnGet(int id)
         {

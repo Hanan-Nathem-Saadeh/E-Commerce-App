@@ -8,7 +8,7 @@ namespace FastMarket.Models.DTO
     public class CartDTO
     {
 
-
+        //  This is the cart DTO
         public int UserId { get; set; }
         public decimal totalPrice { get; set; }
     }

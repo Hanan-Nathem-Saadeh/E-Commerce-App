@@ -34,6 +34,7 @@ namespace FastMarket.Pages.Auth
         
         public LoginDTO loginDTO{ get; set; }
 
+        // Authenticate method to login
         public async Task<IActionResult> OnPostAsync(LoginDTO loginDTO)
         {
 
@@ -41,7 +42,7 @@ namespace FastMarket.Pages.Auth
 
             if (user != null)
             {
-                return   RedirectToPage("Register");
+                return   RedirectToPage("/Home/Index");
             }
             else
             {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FastMarket.Components
 {
+    // this component have the product list in the cart using cookies
     public class SummeryViewComponent : ViewComponent
     {
         [BindProperty]

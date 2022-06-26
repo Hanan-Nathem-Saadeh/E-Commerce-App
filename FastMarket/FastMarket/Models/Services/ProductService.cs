@@ -23,16 +23,20 @@ namespace FastMarket.Models.Services
             _context = context;
             _configration = configration;
         }
+        // method to get all products
+
         public async Task<List<Product>> GetProducts()
         {
 
             return await _context.Products.ToListAsync();
         }
+        // method to get specific products by id
 
         public async Task<Product> GetProduct(int id)
         {
             return await _context.Products.FirstOrDefaultAsync(z => z.Id == id);
         }
+        // method to create new products
 
         public async Task<Product> Create(Product product,IFormFile file)
         {
@@ -43,6 +47,7 @@ namespace FastMarket.Models.Services
             return product;
         }
 
+        // method to update a products
 
         public async Task<Product> UpdateProduct(int id, Product product,IFormFile file)
         {
@@ -55,6 +60,7 @@ namespace FastMarket.Models.Services
             await _context.SaveChangesAsync();
             return product;
         }
+        // method to Delete a products
 
         public async Task Delete(int id)
         {

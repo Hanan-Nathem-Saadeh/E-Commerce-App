@@ -19,12 +19,14 @@ namespace FastMarket.Controllers
         {
             _Product  = Product;
         }
+        // to get all Products
+
         public async Task<IActionResult> Index()
         {
             var ListProduct = await _Product.GetProducts();
             return View(ListProduct);
         }
-
+        // to get specific product
         public async Task<IActionResult> Details(int id)
         {
             Product product = await _Product.GetProduct(id);
@@ -33,8 +35,8 @@ namespace FastMarket.Controllers
         }
 
 
-        //[Authorize(Roles = "Administrator,Editor ")]
-        [Authorize(Roles = "Editor")]
+       [Authorize(Roles = "Administrator,Editor ")]
+        //[Authorize(Roles = "Editor")]
         public async Task<IActionResult> Update(int id)
         {
             Product product = await _Product.GetProduct(id);
@@ -42,8 +44,9 @@ namespace FastMarket.Controllers
             return View( product);
         }
 
+        // to update the Product
 
-   
+
         [HttpPost]
         public async Task<IActionResult> Update(Product product,IFormFile file)
         {
@@ -51,7 +54,7 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 await _Product.UpdateProduct(product.Id,product, file);
-                return Content("Update done");
+                return RedirectToAction("Index", "Product");
             }
             else
             {
@@ -67,6 +70,9 @@ namespace FastMarket.Controllers
 
             return View("addproductView");
         }
+
+        // to Add new  Product
+
         [Authorize(Roles = "Administrator ")]
         [HttpPost]
         public async Task<IActionResult> AddProduct(Product product, IFormFile file)
@@ -75,7 +81,7 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 await _Product.Create(product,file);
-                return Content("Create done");
+                return RedirectToAction("Index", "Product");
             }
             else
             {
@@ -83,6 +89,7 @@ namespace FastMarket.Controllers
             }
         }
 
+        // to Delete the Product
 
         [Authorize(Roles = "Administrator ")]
         public async Task<IActionResult> DeleteProduct(int id)
@@ -90,7 +97,7 @@ namespace FastMarket.Controllers
             await _Product.Delete(id);
 
 
-            return Content("Delete done");
+            return RedirectToAction("Index", "Product");
         }
 
     }

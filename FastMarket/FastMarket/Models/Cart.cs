@@ -2,6 +2,7 @@
 
 namespace FastMarket.Models
 {
+    // Cart Model
     public class Cart
     {
         public int Id { get; set; }       

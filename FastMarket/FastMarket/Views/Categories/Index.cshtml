@@ -1,9 +1,16 @@
 ﻿@model IEnumerable<FastMarket.Models.Categories>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-
 <h1 class="mt-4 mb-5"><strong>All Categories</strong></h1>
 <br/>
+@{
+    if (ViewBag.ThankMessage != null)
+    {
+        <h2 style="color : green "> ViewBag.ThankMessage </h2>
+        ViewBag.ThankMessage = null;
+    }
+
+}
 <a class="btn btn-primary btn-lg" asp-controller="Categories" asp-action="Add"> Create New Category</a>
 <section style="background-color: #eee;">
     <div class="text-center container py-5">

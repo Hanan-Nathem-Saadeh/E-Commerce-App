@@ -2,6 +2,7 @@
 
 namespace FastMarket.Auth.Models.DTO
 {
+    //Dto for login
     public class LoginDTO
     {
         [Required]

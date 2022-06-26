@@ -2,6 +2,8 @@
 
 namespace FastMarket.Models
 {
+    // Categories Model
+
     public class Categories
     {
         public int Id { get; set; }

@@ -33,6 +33,7 @@ namespace FastMarket.Pages.Email
         {
             await _email.SendEmailAsync("f.man.x99@gmail.com", "test2", "hello");
         }
+        // method to send emails
         public async Task OnPost(string toEmail, string title)
         {
             //string message = "Summary of my purchase : \n";

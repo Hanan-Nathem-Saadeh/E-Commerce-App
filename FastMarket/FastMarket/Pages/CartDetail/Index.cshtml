@@ -1,26 +1,57 @@
 ﻿@page
-@*@using FastMarket.Models*@
-@*@model IList<Product>*@
-@using Microsoft.AspNetCore.Identity
-@using FastMarket.Auth.Models
-@inject SignInManager<ApplicationUser> SignInMngr;
+@model FastMarket.Pages.CartDetail.IndexModel
 @{
-    ViewBag.Title = "Cart";
 }
 <br />
 <br />
 <br />
-<br />
-@*
-@{
-    if (SignInMngr.IsSignedIn(User))
+@{if (@Model.Count != 0)
     {
-        <h1> with in your Cart @User.Identity.Name </h1>
+        <h1 class="mt-4 mb-5"><strong>Cart</strong></h1>
+        <h1> Count : @Model.Count </h1>
+        
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Category List</strong></h4>
+            <div class="row">
+                @foreach (var item in @Model.ListProduct)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                 data-mdb-ripple-color="light">
+                                <img style="height: 450px" src="@item.ImageUri"
+                                     class="w-75" />
+                                <a href="#!">
+                                    <div class="mask">
+                                        <div class="d-flex justify-content-start align-items-end h-100"></div>
+                                    </div>
+                                    <div class="hover-overlay">
+                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Name : @item.Name</h5>
+                                <h6 class="mb-3">Price : @item.Price</h6>
+                                <a class="btn btn-primary btn-lg" asp-page="/CategPage/CategProduct" asp-route-id=@item.Id>Edit</a>
+
+                             <form method="post">
+                                    <input hidden asp-for="deletedProduct.Id" value=@item.Id />
+                                    <input hidden asp-for="deletedProduct.Name" value=@item.Name />
+                                    <input hidden asp-for="deletedProduct.Description" value=@item.Description />
+                                    <input hidden asp-for="deletedProduct.Price" value=@item.Price />
+                                    <input hidden asp-for="deletedProduct.ImageUri" value=@item.ImageUri />
+                                    <button class="btn btn-danger btn-lg ms-2" type="submit"> Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     }
     else
     {
-        <a asp-page="/Auth/Index"><button>sign In </button></a>
+        <h1>cart is empty</h1>
     }
 }
-*@
-@await Component.InvokeAsync("Summery")

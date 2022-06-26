@@ -17,6 +17,7 @@ namespace FastMarket.Models.Services
         {
             _context = context;
         }
+        // method to get all Carts
 
         public async Task<List<CartDTO>> GetCarts()
         {
@@ -29,11 +30,13 @@ namespace FastMarket.Models.Services
                 
                 }).ToListAsync();
         }
+        // method to get specific cart by id
 
         public async Task<Cart> GetCart(int id)
         {
             return await _context.Carts.FirstOrDefaultAsync(x=> x.Id == id);
         }
+        // method to create new Carts
 
         public async Task<Cart> Create(Cart cart)
         {
@@ -44,11 +47,13 @@ namespace FastMarket.Models.Services
             await _context.SaveChangesAsync();
             return cart;
         }
+        // method to update a Cart
 
         public Task<Cart> UpdateCart(int id, Cart cart)
         {
             throw new NotImplementedException();
         }
+        // method to delete a Cart
 
         public async Task Delete(int id)
         {
