@@ -28,8 +28,8 @@ This is an e-commerse website build for selling of any products online. In this 
 
 ## Fast Market Features
 
-#|Features
----|-----
+#|#|Features
+---|------|-------
 1|[Category]|(Ability to Add New Category)
 2|[Category](Ability to list Categories)
 3|[Category](Ability to Update Category)
