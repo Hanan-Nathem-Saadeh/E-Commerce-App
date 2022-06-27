@@ -20,6 +20,10 @@ namespace FastMarket.Pages.CartDetail
 
         [BindProperty]
         public decimal TotalPrice { get; set; }
+
+
+        [BindProperty]
+        public Order order { get; set; }
         public void OnGet()
         {
 
@@ -33,7 +37,7 @@ namespace FastMarket.Pages.CartDetail
 
 
         }
-        public async void OnPostAsync()
+        public async void OnPostAsync(Order order)
         {
             ListProduct = JsonConvert.DeserializeObject<List<Product>>
                       (HttpContext.Request.Cookies["ProductObject"]);

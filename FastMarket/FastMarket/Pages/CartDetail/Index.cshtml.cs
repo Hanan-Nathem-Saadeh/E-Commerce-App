@@ -22,14 +22,14 @@ namespace FastMarket.Pages.CartDetail
         public decimal TotalPrice { get; set; }
 
 
-        public void OnGet()
+        public void OnGet(string userId)
         {
             if (HttpContext.Request.Cookies["Count"] != null)
             {
                 Count = int.Parse(HttpContext.Request.Cookies["Count"]);
 
                 ListProduct = JsonConvert.DeserializeObject<List<Product>>
-                        (HttpContext.Request.Cookies["ProductObject"]);
+                        (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
                 foreach (Product item in ListProduct)
                 {
                     // * Amount

@@ -29,7 +29,7 @@ namespace FastMarket.Pages.CategPage
         {
             product = await _Product.GetProduct(id);
         }
-        public async void OnPostAsync (Product product)
+        public async void OnPostAsync (Product product,int userId)
         {
 
             if (HttpContext.Request.Cookies["ProductObject"] != null)
@@ -47,7 +47,7 @@ namespace FastMarket.Pages.CategPage
             CookieOptions cookieOptions = new CookieOptions();
             cookieOptions.Expires = new System.DateTimeOffset(DateTime.Now.AddDays(7));
             HttpContext.Response.Cookies.Append("Count", ListProduct.Count.ToString(), cookieOptions);
-            HttpContext.Response.Cookies.Append("ProductObject", JsonFile, cookieOptions);
+            HttpContext.Response.Cookies.Append($"ProductObject{userId}", JsonFile, cookieOptions);
             // await OnGet(product.Id);
 
             TempData["AlertMessage"] = "An Item Added to the cart";

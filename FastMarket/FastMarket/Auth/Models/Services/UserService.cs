@@ -43,9 +43,9 @@ namespace FastMarket.Auth.Models.Services
             {
                 // Regester specific roles
                List<string> Roles = new List<string>();
-             Roles.Add("Administrator");
+            // Roles.Add("Administrator");
               // Roles.Add("Editor");
-               //Roles.Add("Users");
+               Roles.Add("Users");
               await _userManager.AddToRolesAsync(user, Roles);
 
                 //thanks for Regesteration(Sending Email to user After regester)

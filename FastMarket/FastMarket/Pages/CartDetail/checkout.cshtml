@@ -1,41 +1,48 @@
 ﻿@page
 @model FastMarket.Pages.CartDetail.checkoutModel
+@using Microsoft.AspNetCore.Identity
+@using FastMarket.Auth.Models
+@inject SignInManager<ApplicationUser> SignInMngr
 @{
 }
-    <div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center">
 
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="https://faststorestorage.blob.core.windows.net/images/the-checkout.jpg" style="hight:500px;width:300px;"
-                 alt="Trendy Pants and Shoes"
-                 class="img-fluid rounded-start" />
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h3 class="card-title">buy</h3>
-                <h5 class="card-title">@Model.ListProduct.Count</h5>
-                <h5 class="card-title">@Model.TotalPrice</h5>
-
-                <p class="card-text">
-
-
-                    <form method="post">
-
-                        <!--<input hidden name="id" value= />-->
-                        @*<input hidden asp-for="@Model.ListProduct" value=@Model.ListProduct />
-                                            <input hidden asp-for="deletedProduct.Description" value=@item.Description />
-                <input hidden asp-for="deletedProduct.Price" value=@item.Price />
-                <input hidden asp-for="deletedProduct.ImageUri" value=@item.ImageUri />*@
-                        <button class="btn btn-warning btn-lg ms-2" type="submit"> Delete</button>
-
-                    </form>
-
-
-                </p>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="https://faststorestorage.blob.core.windows.net/images/the-checkout.jpg" style="hight:500px;width:300px;"
+                     alt="Trendy Pants and Shoes"
+                     class="img-fluid rounded-start" />
             </div>
-            
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">buy</h3>
+                    <h5 class="card-title">@Model.ListProduct.Count</h5>
+                    <h5 class="card-title">@Model.TotalPrice</h5>
+
+                    <p class="card-text">
+
+                        
+                        <form method="post">
+
+                            <!--<input hidden name="id" value= />-->
+                            <input hidden name="ListProducst" value=@Model.ListProduct />
+                            
+                            <label>Addrise: 
+                            <input  asp-for=@Model.order.Address >
+                            </label>
+                                <br/>
+                             <input hidden asp-for=@Model.order.UserID value=@SignInMngr.UserManager.GetUserId(User)/>
+
+                            <button class="btn btn-warning btn-lg ms-2" type="submit"> Checkout</button>
+
+                        </form>
+
+
+                    </p>
+                </div>
+
+            </div>
         </div>
-    </div>
     </div>
 </div>

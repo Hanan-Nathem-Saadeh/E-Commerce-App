@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using FastMarket.Auth.Models
+@using FastMarket.Models
+
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInMngr;
 @inject UserManager<ApplicationUser> userManager;
@@ -28,11 +30,11 @@
 </head>
 
 <body>
-               
 
 
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: "#e3f2fd"" >
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: " #e3f2fd"">
         <!-- Container wrapper -->
         <div class="container-fluid">
             <div class="navbar-nav">
@@ -57,18 +59,18 @@
                         @if (SignInMngr.IsSignedIn(User) && (User.IsInRole("Administrator") || User.IsInRole("Editor")))
 
                         {
-                             <li class="nav-item">
-                            <a asp-area="" asp-page="/Email/Index" class="navbar-brand"> Send Email </a>
-                        </li>
+                            <li class="nav-item">
+                                <a asp-area="" asp-page="/Email/Index" class="navbar-brand"> Send Email </a>
+                            </li>
                         }
                         else
                         {
-                        <li class="nav-item">
-                                <a asp-area="" asp-controller="CartDetail" asp-action="Index" class="navbar-brand">Cart </a>
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="CartDetail" asp-action="Index"  asp-route-userId=@ViewBag.userid class="navbar-brand">Cart </a>
                             </li>
 
                         }
-                       
+
                     </ul>
                     <!-- Left links -->
                 </div>
@@ -76,12 +78,40 @@
                 <!-- Right elements -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-                    @if(SignInMngr.IsSignedIn(User))
+                    @if (SignInMngr.IsSignedIn(User))
                     {
                         <li class="nav-item">
                             <!-- Notifications Summery -->
-                          @*@await Component.InvokeAsync("Summery")*@  
+                            @*@await Component.InvokeAsync("Summery")*@
+
                         </li>
+                        @*<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               href="#"
+                               id="navbarDropdownMenuLink"
+                               role="button"
+                               data-mdb-toggle="dropdown"
+                               aria-expanded="false">
+                                <i>
+                                    <img src="https://imgstoretest12342.blob.core.windows.net/images/cartIcon-removebg-preview.png" height="25"
+                                         loading="lazy" />
+                                </i>
+                                <span class="badge rounded-pill badge-notification bg-danger">@await Component.InvokeAsync("Cart")</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @foreach (Product product in @Model)
+                                {
+                                    <li>
+                                        <div class="dropdown-item" href="#">
+                                            <h5>  Name : @product.Name </h5>
+                                            <h6>  Price : @product.Price </h6>
+                                        </div>
+                                    </li>
+
+                                }
+                            </ul>
+                        </li>*@
+
                         <!-- SignInMngr -->
 
                         @*<div class="d-flex align-items-center">*@
@@ -91,21 +121,20 @@
                             <h3>User:@User.Identity.Name </h3>
                         </li>
                         <li class="nav-item">
-
                             <form asp-controller="Auth" asp-action="LogOut" method="post"> <button class="btn btn-warning btn-lg " style="width : 100px" type="submit">Logout</button></form>
                         </li>
-                        }
-                        else
-                        {
+                    }
+                    else
+                    {
                         <li class="nav-item">
 
                             <a asp-controller="Auth" asp-action="Index">  <button class="btn btn-primary btn-lg " style="width : 100px">Log In</button> </a>
                             <a asp-controller="Auth" asp-action="SignUp"> <button class="btn btn-primary btn-lg " style="width : 100px">Sign Up</button></a>
                         </li>
-                        }
-                  </ul>
-        </div>
-        <!-- Right elements -->
+                    }
+                </ul>
+            </div>
+            <!-- Right elements -->
         </div>
     </nav>
 

@@ -43,15 +43,17 @@
             @*///To add product to cart*@
             @if (SignInMngr.IsSignedIn(User))
             {
-                <form method="post">
-                    <input hidden asp-for="@Model.product.Id" value=@Model.product.Id />
+        <form method="post">
+            <input hidden asp-for="@Model.product.Id" value=@Model.product.Id />
+            @ViewBag.userid= value=@SignInMngr.UserManager.GetUserId(User);
+            <input hidden name="userId" value=@SignInMngr.UserManager.GetUserId(User) />
+            <input hidden asp-for="@Model.product.Name" value=@Model.product.Name />
+            <input hidden asp-for="@Model.product.Description" value=@Model.product.Description />
+            <input hidden asp-for="@Model.product.Price" value=@Model.product.Price />
+            <input hidden asp-for="@Model.product.ImageUri" value=@Model.product.ImageUri />
 
-                    <input hidden asp-for="@Model.product.Name" value=@Model.product.Name />
-                    <input hidden asp-for="@Model.product.Description" value=@Model.product.Description />
-                    <input hidden asp-for="@Model.product.Price" value=@Model.product.Price />
-                    <input hidden asp-for="@Model.product.ImageUri" value=@Model.product.ImageUri />
-                    <button class="btn btn-warning btn-lg ms-2" type="submit"> Add To Cart  </button>
-                </form>
+            <button class="btn btn-warning btn-lg ms-2" type="submit"> Add To Cart  </button>
+        </form>
             }
             else
             {
