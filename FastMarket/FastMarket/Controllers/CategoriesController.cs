@@ -51,6 +51,7 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 Categories categories = await _Categories.UpdateCategories(category.Id, category);
+                TempData["AlertMessage"] = $"The {categories.Name} Category Updated successfully :)";
                 return RedirectToAction("Index", "Categories");
             }
             else
@@ -72,7 +73,8 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                await _Categories.Create(category);
-                ViewBag.ThankMessage = $"Add {category.Name} successfully :)  ";
+              //  ViewBag.ThankMessage = $"Add {category.Name} successfully :)  ";
+                TempData["AlertMessage"] = $"{category.Name} Category Created successfully :)";
                     return RedirectToAction("Index", "Categories");
 
             }
@@ -87,6 +89,7 @@ namespace FastMarket.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             await _Categories.Delete(id);
+            TempData["AlertMessage"] = "Delete The Category done successfully :)";
             return RedirectToAction("Index", "Categories");
         }
 
@@ -98,6 +101,7 @@ namespace FastMarket.Controllers
             {
                 CategoriesId = CategoryId
             };
+            
             return View(categoryProduct);
         }
         // To Add product to Category
@@ -108,6 +112,7 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 await _Categories.AddProductToCategories(categoryProduct.CategoriesId,categoryProduct.Product,file);
+                TempData["AlertMessage"] = "A new product Added to a Category successfully :)";
                 return RedirectToAction("Index", "Categories");
             }
             else
@@ -122,6 +127,7 @@ namespace FastMarket.Controllers
         public async Task<IActionResult> RemoveProductFromCategory(int CategoryId , int ProductId)
         {
             await _Categories.deleteProductFromCategories(CategoryId, ProductId );
+            TempData["AlertMessage"] = "The product Removed From a Category successfully :)";
             return RedirectToAction("Index", "Categories");
         }
 

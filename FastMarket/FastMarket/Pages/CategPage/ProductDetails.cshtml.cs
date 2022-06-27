@@ -49,7 +49,10 @@ namespace FastMarket.Pages.CategPage
             HttpContext.Response.Cookies.Append("Count", ListProduct.Count.ToString(), cookieOptions);
             HttpContext.Response.Cookies.Append("ProductObject", JsonFile, cookieOptions);
             // await OnGet(product.Id);
-             Page();
+
+            TempData["AlertMessage"] = "An Item Added to the cart";
+
+            Page();
         }
 
     }

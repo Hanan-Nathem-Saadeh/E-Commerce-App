@@ -34,7 +34,8 @@ namespace FastMarket.Controllers
             var user = await userService.Register(register, this.ModelState);
             if (ModelState.IsValid)
             {
-                return Redirect("Index");
+                await userService.Authenticate(register.UserName,register.Password);
+                return Redirect("/Home/Index");
                 
             }
             else

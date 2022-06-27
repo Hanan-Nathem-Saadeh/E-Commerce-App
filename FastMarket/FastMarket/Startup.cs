@@ -58,6 +58,7 @@ namespace FastMarket
             services.AddScoped<ICart, CartServices>();
 
             services.AddScoped<IProduct, ProductService>();
+            services.AddScoped<IOrder, OrderService>();
 
             services.AddScoped<ICategories, CategoriesServices>();
 

@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace FastMarket.Pages.CartDetail
 {
     public class IndexModel : PageModel
@@ -35,7 +37,7 @@ namespace FastMarket.Pages.CartDetail
                 }
             }
         }
-        public async void OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             ListProduct = JsonConvert.DeserializeObject<List<Product>>
                       (HttpContext.Request.Cookies["ProductObject"]);
@@ -46,9 +48,13 @@ namespace FastMarket.Pages.CartDetail
             HttpContext.Response.Cookies.Append("Count", ListProduct.Count.ToString(), cookieOptions);
             HttpContext.Response.Cookies.Append("ProductObject", JsonFile, cookieOptions);
             // await OnGet();
-          
+
             // alert "item deleted"
-            Page();
+            // Page();
+            // RedirectToAction("Index");
+            TempData["AlertMessage"] = "Item Deleted From the cart";
+         //  Response.Redirect("/CartDetail/Index");
+        return Redirect("/CartDetail/Index");
         }
     }
 }

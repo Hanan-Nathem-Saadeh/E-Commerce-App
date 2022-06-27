@@ -8,6 +8,16 @@
 
 <h1 class="mt-4 mb-5"><strong>All Products</strong></h1>
 <a class="btn btn-primary btn-lg " asp-controller="Product" asp-action="addproductView"> Add </a>
+<br />
+
+@if (TempData["AlertMessage"] !=null)
+{
+    <div  class="alert-success" style=" color: red; height:30px ;font-size: 15px;font-family: 'Raleway Bold';">
+        <strong>Thank You ! </strong>@TempData["AlertMessage"]
+
+    </div>
+}
+<br />
 
 <section style="background-color: #eee;">
     <div class="text-center container py-5">
