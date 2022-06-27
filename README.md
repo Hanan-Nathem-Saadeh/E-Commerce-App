@@ -72,7 +72,7 @@ This is an e-commerse website build for selling of any products online. In this 
 - As an administrator I would like replace a picture for each product so that I can keep my inventory up to date  
 - As an administrator, I would like a preview of my product listings so that I can see what my customers will see in the online store   
 
-# user Dashboard
+# User Dashboard
 ## User Stories and Tasks
 - As a user, I would like to see products available for sale so that I can browse through the inventory for purchase.
 - As a user, I would like to register for an account on the site, so that I can make purchases
