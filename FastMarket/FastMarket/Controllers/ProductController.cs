@@ -54,6 +54,8 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 await _Product.UpdateProduct(product.Id,product, file);
+                TempData["AlertMessage"] = $"The {product.Name}  Updated successfully :)";
+
                 return RedirectToAction("Index", "Product");
             }
             else
@@ -81,6 +83,8 @@ namespace FastMarket.Controllers
             if (ModelState.IsValid)
             {
                 await _Product.Create(product,file);
+                TempData["AlertMessage"] = $"{product.Name} Created successfully :)";
+
                 return RedirectToAction("Index", "Product");
             }
             else
@@ -96,6 +100,7 @@ namespace FastMarket.Controllers
         {
             await _Product.Delete(id);
 
+            TempData["AlertMessage"] = "Delete The Product done successfully :)";
 
             return RedirectToAction("Index", "Product");
         }

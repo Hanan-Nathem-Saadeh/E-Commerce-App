@@ -39,7 +39,10 @@ namespace FastMarket.Pages.CartDetail
             // await OnGet();
 
             // alert "item deleted"
-            Page();
+            // Page();
+           // TempData["AlertMessage"] = "Item Deleted From the cart";
+            //  Response.Redirect("/CartDetail/Index");
+            //return Redirect("/CartDetail/Index");
         }
 
     }

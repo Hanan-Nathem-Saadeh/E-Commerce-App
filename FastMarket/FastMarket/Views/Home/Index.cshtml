@@ -17,7 +17,9 @@
     </br>
     @if (signInManager.IsSignedIn(User) && (User.IsInRole("Administrator")  || User.IsInRole("Editor")))
 { 
-    <a asp-controller="Categories" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2">Category</button> </a>
+            <h1>Admin Dashboard</h1>
+            <br />
+    <a asp-controller="Categories" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2 btn-rounded">Category</button> </a>
     <a asp-controller="Product" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2">All Products</button></a>
 }
    else

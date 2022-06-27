@@ -6,8 +6,16 @@
 @{
     ViewBag.titel = "Product Details";
 }
+<br />
+@if (TempData["AlertMessage"] !=null)
+{
+    <div  class="alert-success" style=" color: red; height:30px ;font-size: 15px;font-family: 'Raleway Bold';">
+        <strong>Thank You ! </strong>@TempData["AlertMessage"]
 
-
+    </div>
+}
+<br />
+<br />
 @*//// To fromat tha product data as bootstrap card*@
 <section style="background-color: #eee; align-items:center" >
     <div class="card mb-3" style="max-width: 450px;align-content:center">
