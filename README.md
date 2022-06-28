@@ -50,6 +50,11 @@ This is an e-commerse website build for selling of any products online. In this 
 13|Cart|(Ability of add a new Product on the Cart)
 14|Cart|(Ability of Remove a product from the Cart)
 15|Cart|(An Email will be sent)
+16|Order|(Ability of Create an order)
+17|Order|(Ability of Remove an order)
+18|Order|(Ability of Create multiple orders)
+
+---
 
 # Admin Dashboard
 ## Stories and Tasks
