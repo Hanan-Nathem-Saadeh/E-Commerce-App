@@ -98,7 +98,7 @@ This is an e-commerse website build for selling of any products online. In this 
 - As an administrator, I would like a copy of all purchases emailed to our warehouse so that they can begin the fulfillment process
 
 ## ERD Diagram
-![](./img/ERD.drawio.png)
+![](./img/ERD.png)
 
 ## Explanation of Tables:
 
