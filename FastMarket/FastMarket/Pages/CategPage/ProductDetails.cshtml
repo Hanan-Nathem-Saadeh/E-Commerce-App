@@ -71,8 +71,15 @@ else
             <input hidden asp-for="@Model.product.Description" value=@Model.product.Description />
             <input hidden asp-for="@Model.product.Price" value=@Model.product.Price />
             <input hidden asp-for="@Model.product.ImageUri" value=@Model.product.ImageUri />
+             @if (SignInMngr.IsSignedIn(User) && (User.IsInRole("Administrator") || User.IsInRole("Editor")))
+             {
+                                                
+            }
+           else
+          {
+         <button class="btn btn-warning btn-lg ms-2" type="submit"> Add To Cart  </button>
 
-            <button class="btn btn-warning btn-lg ms-2" type="submit"> Add To Cart  </button>
+          }
         </form>
             }
             else
