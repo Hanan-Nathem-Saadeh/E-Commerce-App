@@ -1,0 +1,74 @@
+﻿@page
+@model FastMarket.Pages.Orders.OrdersPageModel
+@using FastMarket.Models
+
+@{
+}
+
+
+<h1 class="mt-4 mb-5"><strong>All Orders</strong></h1>
+@*<a class="btn btn-primary btn-lg" asp-page="/Home/Index"> Back </a>*@
+<br />
+@{if (Model.Orders == null)
+    {
+        <h1> there is no orders</h1>   
+        return;
+    } }
+
+
+@foreach (Order orders1 in Model.Orders)
+{
+
+    <h1 class="mt-4 mb-5"><strong>Order Address: @orders1.Address  </strong></h1>
+    <h1 class="mt-4 mb-5"><strong>Order Datetime: @orders1.datetime  </strong></h1>
+
+    <section style="background-color: #eee;">
+        <div class="text-center container py-5">
+            <h4 class="mt-4 mb-5"><strong>Category List</strong></h4>
+
+            <div class="row">
+                @foreach (Product productsOrder in orders1.OrderList)
+                {
+
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                 data-mdb-ripple-color="light">
+                                <img style="height: 350px" src="@productsOrder.ImageUri"
+                                     class="w-75" />
+                                <a href="#!">
+                                    <div class="mask">
+                                        <div class="d-flex justify-content-start align-items-end h-100"></div>
+                                    </div>
+                                    <div class="hover-overlay">
+                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+
+                                <h5 class="card-title mb-3">Name: @productsOrder.Name</h5>
+                                <h6 class="mb-3">@productsOrder.Description</h6>
+                                <h5 class="card-title mb-3">Price: @productsOrder.Price</h5>
+
+
+
+                                <a asp-page="/CategPage/ProductDetails" asp-route-id=@productsOrder.Id> <Button class="btn btn-primary btn-lg">Product Details </Button></a>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                ///////////////////////////////////////////////////////////
+            </div>
+        </div>
+    </section>
+
+}
+
+
+

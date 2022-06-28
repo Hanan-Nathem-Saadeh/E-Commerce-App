@@ -1,65 +1,41 @@
-﻿@using FastMarket.Models
+@using FastMarket.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
-
 @model List<FastMarket.Models.Product>
 
 
+@{ if (Model == null)
+    {
+        return;
+    }
 
-@*<div class="dropdown">
-    <li class="nav-item dropdown">
+}
 
-        <a class="text-reset me-3 dropdown-toggle hidden-arrow"
-           asp-page="/CartCookie/Index"
-           id="navbarDropdownMenuLink"
-           role="button"
-           data-mdb-toggle="dropdown"
-           aria-expanded="false">
-            <i>
-                <img src="https://imgstoretest12342.blob.core.windows.net/images/cartIcon-removebg-preview.png" height="25"
-                     loading="lazy" />
-            </i>
-            <span class="badge rounded-pill badge-notification bg-danger">@await Component.InvokeAsync("Cart")</span>
-        </a>
-    <li class="nav-item dropdown">
 
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
 
-          
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle toggle3" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i>
+                        <img src="https://imgstoretest12342.blob.core.windows.net/images/cartIcon-removebg-preview.png" height="25"
+                             loading="lazy" />
+                    </i>
+                    <span class="badge rounded-pill badge-notification bg-danger">@await Component.InvokeAsync("Cart", Model.Count)</span>
+                </a>
 
+
+                <div class="dropdown-menu menu3" aria-labelledby="navbarDropdown3">
+                        @foreach (Product product in @Model)
+                        {
+                            
+                                <div class="dropdown-item" >
+                                    <h5>  Name : @product.Name </h5>
+                                    <h6>  Price : @product.Price </h6>
+                                </div>
+                            
+                                <div class="dropdown-divider"></div>
+                        }
+                </div>
+            </li>
         </ul>
-    </li>
-
-
-</div>*@
-
-
- <li class="nav-item dropdown">
-     <a class="nav-link dropdown-toggle"
-        href="#"
-        id="navbarDropdownMenuLink"
-        role="button"
-        data-mdb-toggle="dropdown"
-        aria-expanded="false">
-         <i>
-             <img src="https://imgstoretest12342.blob.core.windows.net/images/cartIcon-removebg-preview.png" height="25"
-                  loading="lazy" />
-         </i>
-         <span class="badge rounded-pill badge-notification bg-danger">@await Component.InvokeAsync("Cart")</span>
-     </a>
-           
-     
-     
-     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            @foreach (Product product in @Model)
-            {
-                <li>
-                    <div class="dropdown-item" href="#">
-                        <h5>  Name : @product.Name </h5>
-                        <h6>  Price : @product.Price </h6>
-                    </div>
-                </li>
-
-            }
-        </ul>
-      </li>
+    </div>

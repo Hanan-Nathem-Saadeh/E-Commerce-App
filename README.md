@@ -19,6 +19,12 @@ This is an e-commerse website build for selling of any products online. In this 
 
 [Fast Market](https://fastmarket20220626025535.azurewebsites.net/)
 
+# Vulnerability Report
+
+[Vulnerability Report](https://github.com/Hanan-Nathem-Saadeh/E-Commerce-App/blob/main/VulnerabilityReport.md)
+
+
+
 ## product we are selling
 1- Clothes
 ![](./img/clothes.png)
@@ -50,6 +56,11 @@ This is an e-commerse website build for selling of any products online. In this 
 13|Cart|(Ability of add a new Product on the Cart)
 14|Cart|(Ability of Remove a product from the Cart)
 15|Cart|(An Email will be sent)
+16|Order|(Ability of Create an order)
+17|Order|(Ability of Remove an order)
+18|Order|(Ability of Create multiple orders)
+
+---
 
 # Admin Dashboard
 ## Stories and Tasks
@@ -87,7 +98,7 @@ This is an e-commerse website build for selling of any products online. In this 
 - As an administrator, I would like a copy of all purchases emailed to our warehouse so that they can begin the fulfillment process
 
 ## ERD Diagram
-![](./img/ERD.drawio.png)
+![](./img/ERD.png)
 
 ## Explanation of Tables:
 
