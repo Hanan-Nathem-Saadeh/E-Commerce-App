@@ -58,7 +58,8 @@ namespace FastMarket.Controllers
             }
             else
             {
-                
+
+                TempData["AlertMessage"] = $"Welcom {login.UserName} in Fast Market Website :)";
 
                 return View("Index", login);
             }

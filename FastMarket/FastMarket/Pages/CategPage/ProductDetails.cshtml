@@ -15,13 +15,33 @@
     </div>
 }
 <br />
+
+ @if (SignInMngr.IsSignedIn(User) && (User.IsInRole("Administrator") || User.IsInRole("Editor")))
+
+{
+     <a class="btn btn-primary btn-lg" asp-controller ="Product" asp-action = "Index" > Back </a> 
+
+}
+else
+{
+ <a class="btn btn-primary btn-lg" asp-page="/CategPage/Index" > Continue Shopping </a> 
+
+}
+
+
 <br />
 @*//// To fromat tha product data as bootstrap card*@
-<section style="background-color: #eee; align-items:center" >
-    <div class="card mb-3" style="max-width: 450px;align-content:center">
+<section class="vh-100"  >
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
              data-mdb-ripple-color="light">
-            <img style="height: 350px" src=@Model.product.ImageUri
+            <img style="height: 300px" src=@Model.product.ImageUri
                  class="w-100" />
             <a href="#!">
                 <div class="mask">
@@ -60,8 +80,16 @@
                 <a asp-controller="Auth" asp-action="Index">  <button class="btn btn-primary btn-lg ">please Log In to continue</button> </a>
 
             }
+            
         </div>
+        </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 
