@@ -1,23 +1,32 @@
 ﻿@page
 @model FastMarket.Pages.CartDetail.IndexModel
+@using Microsoft.AspNetCore.Identity
+@using FastMarket.Auth.Models
+@inject SignInManager<ApplicationUser> SignInMngr;
 @{
 }
 <br />
 
-@if (TempData["AlertMessage"] !=null)
+@if (TempData["AlertMessage"] != null)
 {
-    <div  class="alert-success" style=" color: red; height:30px ;font-size: 15px;font-family: 'Raleway Bold';">
+    <div class="alert-success" style=" color: red; height:30px ;font-size: 15px;font-family: 'Raleway Bold';">
         <strong>Alert : </strong>@TempData["AlertMessage"]
 
     </div>
 }
 
- <a class="btn btn-primary btn-lg" asp-page="/CategPage/Index" > Continue Shopping </a> 
+<a class="btn btn-primary btn-lg" asp-page="/CategPage/Index"> Continue Shopping </a>
+
+@{ if (!SignInMngr.IsSignedIn(User))
+    {
+        <a class="btn btn-primary btn-lg " asp-controller="Auth" asp-action="Index">  please Log In to continue</a>
+        return;
+    } }
 
 @{if (@Model.Count != 0)
     {
         <h1 class="mt-4 mb-5"><strong>Cart</strong></h1>
-        <h2> item in cart : @Model.Count </h2>
+        <h2> Pruduct in cart : @Model.Count </h2>
         <h2> Total Price : @Model.TotalPrice </h2>
 
 
@@ -30,7 +39,7 @@
                         <div class="card">
                             <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                                  data-mdb-ripple-color="light">
-                                <img style="height: 450px" src="@item.ImageUri"
+                                <img style="height: 400px" src="@item.ImageUri"
                                      class="w-75" />
                                 <a href="#!">
                                     <div class="mask">
@@ -44,15 +53,17 @@
                             <div class="card-body">
                                 <h5 class="card-title mb-3">Name : @item.Name</h5>
                                 <h6 class="mb-3">Price : @item.Price</h6>
-                                <a class="btn btn-primary btn-lg" asp-page="/CartDetail/EditCartItem" asp-route-id=@item.Id>Edit</a>
+                                <h6 class="mb-3">Amount : @item.Amount</h6>
+                                @{ Model.ItemTotalPrice = @item.Price * @item.Amount;}
+                            <h6 class="mb-3">Total Price :@Model.ItemTotalPrice </h6>
+                                <a class="btn btn-primary btn-lg" asp-page="/CartDetail/EditCartItem" asp-route-id=@item.Id asp-route-userId=@SignInMngr.UserManager.GetUserId(User)>Edit</a>
 
                                 <form method="post">
 
                                     <input hidden name="id" value=@item.Id />
-                                    @*<input hidden asp-for="@Model.ListProduct" value=@Model.ListProduct />
-                                                                    <input hidden asp-for="deletedProduct.Description" value=@item.Description />
-                                        <input hidden asp-for="deletedProduct.Price" value=@item.Price />
-                                        <input hidden asp-for="deletedProduct.ImageUri" value=@item.ImageUri />*@
+
+                                    <input hidden name="userId" value=@SignInMngr.UserManager.GetUserId(User) />
+
                                     <button class="btn btn-danger btn-lg ms-2" type="submit"> Delete</button>
                                 </form>
                             </div>
@@ -60,13 +71,14 @@
                     </div>
                 }
             </div>
-            <a class="btn btn-warning btn-lg" asp-page="/CartDetail/checkout">checkout</a>
+            <a class="btn btn-warning btn-lg" asp-page="/CartDetail/checkout" asp-route-userId=@SignInMngr.UserManager.GetUserId(User)>checkout</a>
 
 
         </div>
     }
     else
     {
+        <br>
         <h1>cart is empty</h1>
     }
 }

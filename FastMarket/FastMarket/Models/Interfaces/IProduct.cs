@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,9 @@ namespace FastMarket.Models.Interfaces
         // method to Delete a products
 
         Task Delete(int id);
+
+        // check if the amout that user requer of some product is out of range or not
+        Task<bool> checkAmount(Product product );
+
     }
 }

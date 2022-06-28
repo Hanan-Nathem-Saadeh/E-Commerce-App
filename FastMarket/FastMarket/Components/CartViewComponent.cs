@@ -10,16 +10,15 @@ namespace FastMarket.Components
     //[ViewComponent(Name ="CartComponent")]
     public class CartViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int count)
         {
             //public IList<Product> ProductList = JsonConvert.DeserializeObject<Product>(cookie.Value);
             int Data = 0;
-            int.TryParse(HttpContext.Request.Cookies["Count"], out Data);
+            int.TryParse(count.ToString(), out Data);
            
            // ViewComponentModel cartData = new ViewComponentModel { Count =int.Parse (HttpContext.Request.Cookies["Count"] ),ProductList=HttpContext.Request.Cookies["ProductObject"] };
             return View(Data);
-        }
-    
-
+        }   
+             
     }
 }
