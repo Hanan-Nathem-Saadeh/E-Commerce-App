@@ -19,6 +19,12 @@ This is an e-commerse website build for selling of any products online. In this 
 
 [Fast Market](https://fastmarket20220626025535.azurewebsites.net/)
 
+# Vulnerability Report
+
+[Vulnerability Report](https://github.com/Hanan-Nathem-Saadeh/E-Commerce-App/blob/main/VulnerabilityReport.md)
+
+
+
 ## product we are selling
 1- Clothes
 ![](./img/clothes.png)
