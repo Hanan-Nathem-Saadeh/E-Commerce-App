@@ -24,7 +24,7 @@
 
     <img src="https://faststorestorage.blob.core.windows.net/images/Logo.jpg" width=150 alt="Logo" />
 
-    </br>
+    <br />
     @if (signInManager.IsSignedIn(User) && (User.IsInRole("Administrator")  || User.IsInRole("Editor")))
 { 
             <h1>Admin Dashboard</h1>
