@@ -22,39 +22,60 @@ namespace FastMarket.Pages.CartDetail
         public decimal TotalPrice { get; set; }
 
 
+        [BindProperty]
+        public decimal ItemTotalPrice { get; set; }
         public void OnGet(string userId)
         {
-            if (HttpContext.Request.Cookies["Count"] != null)
-            {
-                Count = int.Parse(HttpContext.Request.Cookies["Count"]);
+            Count = 0;
 
-                ListProduct = JsonConvert.DeserializeObject<List<Product>>
-                        (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
-                foreach (Product item in ListProduct)
+
+                if (userId == null)
                 {
-                    // * Amount
-                    TotalPrice += item.Price;
+                return;
                 }
+            if (HttpContext.Request.Cookies[$"ProductObject{userId}"] != null)
+            {
+                ListProduct = JsonConvert.DeserializeObject<List<Product>>
+                (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
+                if (ListProduct != null)
+                {
+                    foreach (Product item in ListProduct)
+                    {
+                        // Amount
+                        TotalPrice += item.Price * item.Amount;
+                    }
+
+                    if (ListProduct.Count != 0)
+                    {
+
+                        Count = ListProduct.Count + 1;
+                    }
+                }
+                
             }
+            else
+            {
+                ListProduct = new List<Product>();
+            }
+
+                
+              
+            
         }
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync(int id, string userId)
         {
             ListProduct = JsonConvert.DeserializeObject<List<Product>>
-                      (HttpContext.Request.Cookies["ProductObject"]);
+                      (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
             ListProduct.Remove(ListProduct.Find(x=>x.Id ==id));
             var JsonFile = JsonConvert.SerializeObject(ListProduct);
             CookieOptions cookieOptions = new CookieOptions();
             cookieOptions.Expires = new System.DateTimeOffset(DateTime.Now.AddDays(7));
-            HttpContext.Response.Cookies.Append("Count", ListProduct.Count.ToString(), cookieOptions);
-            HttpContext.Response.Cookies.Append("ProductObject", JsonFile, cookieOptions);
-            // await OnGet();
+            HttpContext.Response.Cookies.Append($"ProductObject{userId}", JsonFile, cookieOptions);
 
-            // alert "item deleted"
-            // Page();
-            // RedirectToAction("Index");
+
             TempData["AlertMessage"] = "Item Deleted From the cart";
          //  Response.Redirect("/CartDetail/Index");
-        return Redirect("/CartDetail/Index");
+        return Redirect($"/CartDetail/Index?userId={userId}");
         }
     }
 }

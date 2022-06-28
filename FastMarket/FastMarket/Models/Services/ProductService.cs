@@ -3,6 +3,7 @@ using Azure.Storage.Blobs.Models;
 using FastMarket.Data;
 using FastMarket.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -97,5 +98,21 @@ namespace FastMarket.Models.Services
 
         }
 
+        public async  Task<bool> checkAmount(Product product)
+        {
+            Product productDB = await _context.Products.FirstOrDefaultAsync(item => item.Name == product.Name);
+            if (productDB == null)
+            {
+                //modelstate.AddModelError("Item Is Sold", "Sorry about that this item has been sold.");
+                return false;
+            }else if (product.Amount <= 0 || product.Amount > productDB.Amount)
+            {
+                //modelstate.AddModelError("Out OF Range", "The number of Amount is out of range.");
+                return false;
+            }
+            return true;
+        }
+
+      
     }
 }

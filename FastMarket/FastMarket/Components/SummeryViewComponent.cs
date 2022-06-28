@@ -11,11 +11,32 @@ namespace FastMarket.Components
     {
         [BindProperty]
         public List<Product> ListProduct { get; set; }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(string userId)
         {
-            
-            ListProduct = JsonConvert.DeserializeObject<List<Product>>
-                      (HttpContext.Request.Cookies["ProductObject"]);   
+
+
+
+
+            if (userId == null)
+            {
+                return null;
+            }
+            if (HttpContext.Request.Cookies[$"ProductObject{userId}"] != null)
+            {
+                ListProduct = JsonConvert.DeserializeObject<List<Product>>
+                (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
+
+              
+            }
+            else
+            {
+                ListProduct = new List<Product>();
+            }
+
+
+
+
+
             return View(ListProduct);
          
         }
