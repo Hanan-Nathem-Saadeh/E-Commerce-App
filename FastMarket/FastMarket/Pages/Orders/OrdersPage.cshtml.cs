@@ -24,11 +24,21 @@ namespace FastMarket.Pages.Orders
         [BindProperty]
         public List<Order> Orders { get; set; }
 
+        [BindProperty]
+        public List<Product> ListProduct { get; set; }
 
-
-        public async void OnGet()
+        public async Task OnGet(string userId)
         {
-            Orders = await _order.GetOrders();
+            if (userId== null) { Orders = await _order.GetOrders();
+
+                ViewData["viewUserID"] = "user";
+            } else { 
+                Orders = await _order.GetOrderByUserID(userId); }
+            
+                
+                
+        
         }
+    
     }
 }

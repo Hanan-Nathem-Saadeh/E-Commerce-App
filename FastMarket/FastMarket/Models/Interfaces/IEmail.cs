@@ -6,5 +6,7 @@ namespace FastMarket.Models.Interfaces
     {
         //public Task<bool> SendEmail(string message, string toEmail, string title);
         public Task SendEmailAsync(string email, string subject, string htmlMessage);
+
+        public  Task<string> GetEmailAdress(string UserId);
     }
 }

@@ -1,32 +1,33 @@
 ﻿@model FastMarket.Models.Product
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-<h2> Hello in update page </h2>
+<a class="btn btn-primary btn-lg " asp-controller="Product" asp-action="Index">  Back </a>
+<h2> Update Product </h2>
 
 
 <section class="vh-100" style="background-color: #eee; >
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-6">
-        <div class="card text-black" style="border-radius: 25px;">
-          <div class="card-body p-md-5">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-<form asp-controller="Product" asp-action="Update" method="post" enctype="multipart/form-data" >
-    <input hidden asp-for="@Model.Id" />
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <form asp-controller="Product" asp-action="Update" method="post" enctype="multipart/form-data">
+                                    <input hidden asp-for="@Model.Id" />
 
-    <partial name="_AddEdit" />
-    <button class="btn btn-warning btn-lg"  type="submit">update product</button>
-</form>
+                                    <partial name="_AddEdit" />
+                                    <button class="btn btn-warning btn-lg" type="submit">update product</button>
+                                </form>
 
-         </div>
-            
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <div asp-validation-summary="All"></div>
