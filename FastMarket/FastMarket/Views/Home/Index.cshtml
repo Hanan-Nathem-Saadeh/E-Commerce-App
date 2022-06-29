@@ -22,44 +22,54 @@
 
     <img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg" width=400 alt="Logo" />
 
+
     <img src="https://faststorestorage.blob.core.windows.net/images/Logo.jpg" width=150 alt="Logo" />
 
+
+    </br>
+    @if (signInManager.IsSignedIn(User) && (User.IsInRole("Administrator") || User.IsInRole("Editor")))
+    {
+        <h1>Admin Dashboard</h1>
+        <br />
+        <a asp-controller="Categories" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2 btn-rounded">Category</button> </a>
+        <a asp-controller="Product" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2">All Products</button></a>
+    }
+    else
+    {
+        <a asp-page="/CategPage/Index"> <button class="btn btn-primary btn-lg" style="width: 200px; padding: 4px;">Category </button> </a>
+
+
+        <a asp-page="/ProductPages/Index"> <button class="btn btn-primary btn-lg" style="width : 200px; padding:4px;">All Products</button> </a>
+
+    }
     <br />
-    @if (signInManager.IsSignedIn(User) && (User.IsInRole("Administrator")  || User.IsInRole("Editor")))
-{ 
-            <h1>Admin Dashboard</h1>
-            <br />
-    <a asp-controller="Categories" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2 btn-rounded">Category</button> </a>
-    <a asp-controller="Product" asp-action="Index"> <button class="btn btn-warning btn-lg ms-2">All Products</button></a>
-}
-   else
-   {
- <a asp-page="/CategPage/Index"> <button class="btn btn-primary btn-lg" style="width : 200px">Category </button> </a>
-    <a asp-page="/ProductPages/Index"> <button class="btn btn-primary btn-lg" style="width : 200px">All Products</button> </a>
+    <br />
+    <br />
+    <br />
+    <br />
 
-   }
-   <br />
-   <br />
-   <br />
-   <br />
-   <br />
-   <div class="bg-light">
-  <div class="container py-5">
-    <div class="row h-100 align-items-center py-5">
-      <div class="col-lg-6">
-            <img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg" width=400 alt="Logo" />
+    
+    <br />
+    <br />
+    <br />
+    <div class="bg-light">
+        <div class="container py-5">
+            <div class="row h-100 align-items-center py-5">
+                <div class="col-lg-6">
+                    <img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg" width=400 alt="Logo" />
 
-                <h3 class="display-8">The fastest delivery experience will be in fast market, any delivery will not take more than 24 hours</h3>
-                <h3 class="display-8">It is an e-commerse website build for selling of any products online. In this project we have mainly considered to adding the products to the users cart to bye or delete from the cart. The users can increase or decrease the items amount in the cart. After that the user may pay and get the order successful. The Project also uses the mail facilities to the users.</h3>
+                    <h3 class="display-8">The fastest delivery experience will be in fast market, any delivery will not take more than 24 hours</h3>
+                    <h3 class="display-8">It is an e-commerse website build for selling of any products online. In this project we have mainly considered to adding the products to the users cart to bye or delete from the cart. The users can increase or decrease the items amount in the cart. After that the user may pay and get the order successful. The Project also uses the mail facilities to the users.</h3>
 
-      </div>
-      <div class="col-lg-6 d-none d-lg-block"><img src="https://faststorestorage.blob.core.windows.net/images/e-commerce.png" alt="" class="img-fluid"></div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block"><img src="https://faststorestorage.blob.core.windows.net/images/e-commerce.png" alt="" class="img-fluid"></div>
+            </div>
+        </div>
+
     </div>
-  </div>
-</div>
-  
 
 
-   
+
+
 
 </div>

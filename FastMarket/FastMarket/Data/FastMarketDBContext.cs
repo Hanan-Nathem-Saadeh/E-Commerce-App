@@ -37,7 +37,7 @@ namespace FastMarket.Data
 
             modelBuilder.Entity<Product>().HasData(
 
-                new Product { Id = 1, Name = "Liner & Colossal Kajal", Price = 15.5m, Description = "Maybelline New York Colossal Bold Liner & Colossal Kajal - EYE KIT COMBO (Pack Of 2), 0.35 gm + 3 ml", Amount = 150, ImageUri= new Uri("https://faststorestorage.blob.core.windows.net/images/R.jpg") },
+                new Product { Id = 1, Name = "Liner & Colossal Kajal", Price = 15.5m, Description = "Maybelline New York Colossal Bold Liner & Colossal Kajal - EYE KIT COMBO (Pack Of 2), 0.35 gm + 3 ml", Amount = 150, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R.jpg") },
                 new Product { Id = 2, Name = "Blushes", Price = 20.00m, Description = "URBANMAC Premium Synthetic Kabuki Foundation Face Powder Blush Eyeshadow Brush Makeup Brush Kit with Blender Sponge and Brush Cleaner - Makeup Brushes Set", Amount = 120, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R(5).jpg") },
                 new Product { Id = 3, Name = "Foundation ", Price = 50.00m, Description = "Coloressence Full Coverage Waterproof Lightweight Matte Formula Opaque Lotion High Definition Foundation (HDF-2) with Set of 2 Blending Sponge", Amount = 250, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R(3).jpg") },
                 new Product { Id = 4, Name = "Concealer ", Price = 35.00m, Description = "Wiffy Concealer Base Palette 15 In 1 Cream Kit Concealer", Amount = 60, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R(4).jpg") },
@@ -57,7 +57,7 @@ namespace FastMarket.Data
                 new Product { Id = 18, Name = "YITAHOME 6 Pieces Patio Furniture Set", Amount = 50, Description = "YITAHOME 6 Pieces Patio Furniture Set, Outdoor Conversation Set, Outside Sectional Sofa PE Rattan Wicker Set with Table and Cushion for Porch Lawn Garden and Poolside, Gray Gradient", Price = 456, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R(18).jpg") },
                 new Product { Id = 19, Name = "Chairs Conversation Set Metal Frame Furniture", Amount = 50, Description = "LOKATSE HOME Outdoor 2 Piece Patio Chairs Conversation Set Metal Frame Furniture with Cushion, Blue", Price = 254, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R(19).jpg") },
                 new Product { Id = 20, Name = "Bed", Amount = 50, Description = "DHP Dakota Upholstered Platform Bed with Underbed Storage Drawers and Diamond Button Tufted Headboard and Footboard, No Box Spring Needed, Queen, White Faux Leather", Price = 512, ImageUri = new Uri("https://faststorestorage.blob.core.windows.net/images/R(20).jpg") }
-                
+
             );
 
             modelBuilder.Entity<Categories>().HasData(
@@ -65,7 +65,7 @@ namespace FastMarket.Data
               new Categories { Id = 2, Name = "Clothes", Details = "Clothes Category contain multiple product like jeens,T-shirt,dress...." },
               new Categories { Id = 3, Name = "Mobiles", Details = "Mobiles Category contain multiple product like IPhones,Samsung,Nokia...." },
               new Categories { Id = 4, Name = "Computers & accessories", Details = "Computers & accessories Category contain multiple product like PC,Labtop,Headphones...." },
-            
+
               new Categories { Id = 5, Name = "Furniture", Details = "Furniture Category contain multiple product like Beds ,Beds Covers, Sofa" }
 
             );
@@ -73,7 +73,7 @@ namespace FastMarket.Data
 
             modelBuilder.Entity<CategoriesProduct>().HasData(
 
-                new CategoriesProduct {CategoriesId =1 , ProductId = 1 },
+                new CategoriesProduct { CategoriesId = 1, ProductId = 1 },
                 new CategoriesProduct { CategoriesId = 1, ProductId = 2 },
                 new CategoriesProduct { CategoriesId = 1, ProductId = 3 },
                 new CategoriesProduct { CategoriesId = 1, ProductId = 4 },
@@ -93,7 +93,7 @@ namespace FastMarket.Data
                 new CategoriesProduct { CategoriesId = 5, ProductId = 18 },
                 new CategoriesProduct { CategoriesId = 5, ProductId = 19 },
                 new CategoriesProduct { CategoriesId = 5, ProductId = 20 }
-               
+
 
 
 
@@ -102,9 +102,7 @@ namespace FastMarket.Data
             SeedRole(modelBuilder, "Administrator");
             SeedRole(modelBuilder, "Editor");
             SeedRole(modelBuilder, "Users");
-            //modelBuilder.Entity<ApplicationUser>().HasData(
-            //    new ApplicationUser {UserName = "fuad",Email="fx.m@gmail.com",PasswordHash  }
-            //    );
+
         }
         private void SeedRole(ModelBuilder modelBuilder, string roleName)
         {

@@ -4,7 +4,16 @@
     ViewBag.titel = "Category";
 
 }
- <a class="btn btn-primary btn-lg" asp-page="/Home/Index" > Back </a> 
+<a class="btn btn-primary btn-lg" asp-page="/Home/Index"> Back </a>
+<br />
+@if (TempData["ThanksBuying"] != null)
+{
+    <div class="alert-success" style=" color: red; height:30px ;font-size: 15px;font-family: 'Raleway Bold';">
+        <strong>Thank You ! </strong>@TempData["ThanksBuying"]
+
+    </div>
+}
+<br />
 <br />
 <h1 class="mt-4 mb-5"><strong>All Categories</strong></h1>
 <section style="background-color: #eee;">

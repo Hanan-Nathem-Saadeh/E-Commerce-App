@@ -28,7 +28,7 @@ namespace FastMarket.Pages.CategPage
         [BindProperty]
         public int Count { get; set; }
         [BindProperty]
-        public IList<Product> ListProduct { get; set; }
+        public List<Product> ListProduct { get; set; }
 
         [BindProperty]
         public Product product { get; set; }
@@ -36,42 +36,47 @@ namespace FastMarket.Pages.CategPage
         {
             product = await _Product.GetProduct(id);
         }
-        public async void OnPostAsync (Product product,string userId)
+        public async Task<ActionResult> OnPostAsync (Product product,string userId)
         {
 
 
             //---------------
-            //if (! await _Product.checkAmount(product))
-            //{
-
-            //    TempData["AlertMessage"] = "the number that you requer is out of range";
-
-            //    //OnGetAsync(product.Id);
-            //    Page();
-
-            //}
-
-
-            if (HttpContext.Request.Cookies[$"ProductObject{userId}"] != null)
+            if (!await _Product.checkAmount(product))
             {
-                ListProduct = JsonConvert.DeserializeObject<List<Product>>
-                        (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
-                ListProduct.Add(product);
-            }
-            else
-            {
-                ListProduct.Add(product);
-            }
-            var JsonFile = JsonConvert.SerializeObject(ListProduct);
 
-            CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = new System.DateTimeOffset(DateTime.Now.AddDays(7));
-            HttpContext.Response.Cookies.Append($"ProductObject{userId}", JsonFile, cookieOptions);
-            // await OnGet(product.Id);
+                TempData["AlertMessage"] = "the number that you requer is out of range";
 
-            TempData["AlertMessage"] = "An Item Added to the cart";
+                return RedirectToPage("/CategPage/ProductDetails", new { id = product.Id });
 
-            Page();
+
+             }
+            
+                if (HttpContext.Request.Cookies[$"ProductObject{userId}"] != null)
+                {
+                    ListProduct = JsonConvert.DeserializeObject<List<Product>>
+                            (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
+                    //   ListProduct = new List<Product>();
+                    ListProduct.Add(product);
+                }
+                else
+                {
+                    ListProduct.Add(product);
+
+                }
+                var JsonFile = JsonConvert.SerializeObject(ListProduct);
+
+                CookieOptions cookieOptions = new CookieOptions();
+                cookieOptions.Expires = new System.DateTimeOffset(DateTime.Now.AddDays(7));
+                HttpContext.Response.Cookies.Append($"ProductObject{userId}", JsonFile, cookieOptions);
+                // await OnGet(product.Id);
+
+                TempData["AlertMessage"] = "An Item Added to the cart";
+
+            return RedirectToPage("/CategPage/ProductDetails", new { id = product.Id });
+
+
+
+
         }
 
     }

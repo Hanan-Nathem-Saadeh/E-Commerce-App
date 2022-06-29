@@ -1,6 +1,8 @@
-﻿using FastMarket.Models.Interfaces;
+﻿using FastMarket.Data;
+using FastMarket.Models.Interfaces;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FastMarket.Models.Services
@@ -8,6 +10,12 @@ namespace FastMarket.Models.Services
 
     public class EmailService : IEmail
     {
+        private readonly FastMarketDBContext _context;
+
+        public EmailService(FastMarketDBContext context)
+        {
+            this._context = context;
+        }
 
         //public  async Task<bool> SendEmail(string message, string toEmail,string title)
         //public async Task SendEmailAsync(string email, string subject, string htmlMessage)
@@ -36,7 +44,14 @@ namespace FastMarket.Models.Services
             msg.AddContent(MimeType.Html, htmlMessage);
             await client.SendEmailAsync(msg);
         }
+
+        public async Task<string> GetEmailAdress(string UserId)
+        {
+            var user = _context.Users.FirstOrDefault(use1 => use1.Id == UserId);
+            return user.Email;
+        }
+        }
+
     }
 
-}
 

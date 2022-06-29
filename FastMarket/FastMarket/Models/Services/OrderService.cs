@@ -1,8 +1,10 @@
 ﻿using FastMarket.Data;
+using FastMarket.Models.DTO;
 using FastMarket.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FastMarket.Models.Services
@@ -17,10 +19,31 @@ namespace FastMarket.Models.Services
             _context = context;
             _configration = configration;
         }
-        // method to create new Order
 
-        public async Task<Order> Create(Order order)
+
+
+
+       
+
+
+        // method to create new Order
+        public async Task<Order> Create(OrderDTO orderDTO)
         {
+            Order order = new Order()
+            {
+
+                Address = orderDTO.Address,
+                Count = orderDTO.Count,
+                TotalPrice = orderDTO.TotalPrice,
+                datetime = orderDTO.datetime,
+                UserID = orderDTO.UserID,
+                OrderListJSON = orderDTO.OrderListJSON
+
+
+
+            };
+
+
             _context.Entry(order).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return order;
@@ -37,7 +60,7 @@ namespace FastMarket.Models.Services
 
         public async Task<List<Order>> GetOrders()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders. ToListAsync();
         }
         // method to update order
         public async Task<Order> UpdateOrder(int id, Order order)
@@ -56,7 +79,11 @@ namespace FastMarket.Models.Services
 
             await _context.SaveChangesAsync();
         }
-        
 
+        // method to get specific order by id
+        public async Task<List<Order>> GetOrderByUserID(string UserId)
+        {
+            return await _context.Orders.Where(use1 => use1.UserID == UserId).OrderByDescending(use1 => use1.datetime).Take(20).ToListAsync();
+        }
     }
 }

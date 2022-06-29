@@ -1,7 +1,7 @@
 ﻿@page
 @model FastMarket.Pages.Orders.OrdersPageModel
 @using FastMarket.Models
-
+@using Newtonsoft.Json;
 @{
 }
 
@@ -11,60 +11,75 @@
 <br />
 @{if (Model.Orders == null)
     {
-        <h1> there is no orders</h1>   
+        <h1> there is no orders</h1>
         return;
     } }
 
 
 @foreach (Order orders1 in Model.Orders)
 {
-
-    <h1 class="mt-4 mb-5"><strong>Order Address: @orders1.Address  </strong></h1>
-    <h1 class="mt-4 mb-5"><strong>Order Datetime: @orders1.datetime  </strong></h1>
-
+    <br>
     <section style="background-color: #eee;">
+
+        @{ if (ViewData["viewUserID"] != null)
+            {
+        <h1 class="mt-4 mb-5"><strong>User Id: @orders1.UserID  </strong></h1>
+                ViewData["viewUserID"] = null;
+            }
+
+
+        }
+
+
+        <h3 class="mt-4 mb-5"><strong>Order Address: @orders1.Address  </strong></h3>
+        <h3 class="mt-4 mb-5"><strong>Order Datetime: @orders1.datetime  </strong></h3>
+
+
         <div class="text-center container py-5">
             <h4 class="mt-4 mb-5"><strong>Category List</strong></h4>
-
-            <div class="row">
-                @foreach (Product productsOrder in orders1.OrderList)
-                {
-
-
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                 data-mdb-ripple-color="light">
-                                <img style="height: 350px" src="@productsOrder.ImageUri"
-                                     class="w-75" />
-                                <a href="#!">
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100"></div>
-                                    </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="card-body">
-
-                                <h5 class="card-title mb-3">Name: @productsOrder.Name</h5>
-                                <h6 class="mb-3">@productsOrder.Description</h6>
-                                <h5 class="card-title mb-3">Price: @productsOrder.Price</h5>
+            @*convert json string to List*@
+            @{Model.ListProduct = JsonConvert.DeserializeObject<List<Product>>
+                                (orders1.OrderListJSON);}
+        <div class="row">
+            @foreach (Product productsOrder in Model.ListProduct)
+            {
 
 
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                             data-mdb-ripple-color="light">
+                            <img style="height: 350px" src="@productsOrder.ImageUri"
+                                 class="w-75" />
+                            <a href="#!">
+                                <div class="mask">
+                                    <div class="d-flex justify-content-start align-items-end h-100"></div>
+                                </div>
+                                <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
 
-                                <a asp-page="/CategPage/ProductDetails" asp-route-id=@productsOrder.Id> <Button class="btn btn-primary btn-lg">Product Details </Button></a>
+                            <h5 class="card-title mb-3">Name: @productsOrder.Name</h5>
+                            <h6 class="mb-3">@productsOrder.Description</h6>
+                            <h5 class="card-title mb-3">Price: @productsOrder.Price</h5>
 
 
-                            </div>
+
+
+
                         </div>
                     </div>
+                </div>
+                <hr>
 
-                }
 
-                ///////////////////////////////////////////////////////////
-            </div>
+            }
+
+
+        </div>
         </div>
     </section>
 

@@ -1,28 +1,45 @@
 ﻿@page
 @model FastMarket.Pages.Email.IndexModel
 @{
-    <br />
-    <br />
-    <br />
-    <br />
     @*
-    if (Model.result==true)
-    {
-        <h1> Sucsess </h1>
-    }
-    else
-    {
-    <h1> Some thin wrong</h1>
-    }
+        if (Model.result==true)
+        {
+            <h1> Sucsess </h1>
+        }
+        else
+        {
+        <h1> Some thin wrong</h1>
+        }
     *@
 }
+<section class="vh-100">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <form method="post">
+                                    <label class="form-label" for="form3Example3"> Title : </label>
+                                    <input asp-for="title" type="text" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form3Example3"> Send To : </label>
+                                    <input asp-for="ToEmail" type="text" class="form-control form-control-lg" />
+                                    <button class="btn btn-success" type="submit"> Send Email </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div asp-validation-summary="All"></div>
 
-<br />
-<br />
-<br />
-<br />
-<form method="post"> 
-  <labl> Title :  <input  asp-for = "title"/> </label>
-   <lable> Send To : <input  asp-for = "ToEmail"/></lable> 
-   <button type ="submit"> Send Email </button>
-   </form>
+
+
+
+
+
+

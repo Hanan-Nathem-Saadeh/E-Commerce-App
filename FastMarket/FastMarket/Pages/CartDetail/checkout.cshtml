@@ -26,13 +26,22 @@
                         <form method="post">
 
                             <!--<input hidden name="id" value= />-->
-                            <input hidden name="ListProducst" value=@Model.ListProduct />
-                            
-                            <label>Addrise: 
-                            <input  asp-for=@Model.order.Address >
+                            <input hidden asp-for=@Model.order.Count value=@Model.ListProduct.Count>
+
+                            <input hidden asp-for=@Model.order.TotalPrice value=@Model.TotalPrice>
+
+                            @*<input hidden asp-for=@Model.order. value=@Model.ListProduct>*@
+
+
+
+                            <label>
+                                Address:
+                                <input asp-for=@Model.order.Address>
                             </label>
-                                <br/>
-                             <input hidden asp-for=@Model.order.UserID value=@SignInMngr.UserManager.GetUserId(User)/>
+                            <br />
+                            <input hidden asp-for=@Model.order.UserID value=@SignInMngr.UserManager.GetUserId(User) />            
+                            @*<input hidden asp-for=@Model.order.UserID value=@SignInMngr.UserManager.GetEmailAsync() />*@
+
 
                             <button class="btn btn-warning btn-lg ms-2" type="submit"> Checkout</button>
 

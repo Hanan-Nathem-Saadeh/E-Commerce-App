@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <br />
 <br />
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -17,77 +16,119 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .left {
+            width: 50%;
+            float: left;
+        }
+
+        .right {
+            width: 50%;
+            float: right;
+        }
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+        /*  Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            margin-bottom: 0;
+        }
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #E3F2FD;
+            padding: 25px;
+        }
+
+        .modal-backdrop {
+            background: none;
+        }
+    </style>
 
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #E3F2FD;">
         <!-- Container wrapper -->
         <div class="container-fluid">
             <div class="navbar-header">
-
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                                <img src="https://faststorestorage.blob.core.windows.net/images/Fastmarkets_Logo.jpg"
-                                     height="25"
-                                     alt="MDB Logo"
-                                     loading="lazy" />
-                            </a>
-                            </li>
-                            <!-- Left links -->
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size:35px; font-weight:bold; color:red;">Fast Market </a>
+                        </li>
+                        <!-- Left links -->
                         <li class="nav-item">
-                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Home </a>
-                             @if (SignInMngr.IsSignedIn(User) && (User.IsInRole("Administrator")  || User.IsInRole("Editor")))
-                            {
-                                <li class="nav-item">
-                            <a asp-area="" asp-page="/Email/Index" class="navbar-brand"> Send Email </a>
-                                </li>
-                            }
-                            
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size:16px; font-weight:bold;">Home </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="" asp-page="/AboutUs/AboutUs" class="navbar-brand" style="font-size:16px; font-weight:bold;"> About Us </a>
+                        </li>
+                        @if (SignInMngr.IsSignedIn(User) && (User.IsInRole("Administrator") || User.IsInRole("Editor")))
+                        {
+                            <li class="nav-item">
+                                <a  asp-page="/Email/Index" class="navbar-brand" style="font-size:16px; font-weight:bold;"> Send Email </a>
+                            </li>
+                        }
+                        @if (SignInMngr.IsSignedIn(User) && (User.IsInRole("Administrator") || User.IsInRole("Editor")))
+                        {
+                            <li class="nav-item">
+                                <a asp-area="" asp-page="/Orders/OrdersPage"  class="navbar-brand" style="font-size:16px; font-weight:bold;">List Orders</a>
+                            </li>
+                        }
+                        
 
                     </ul>
                     <!-- Left links -->
                 </div>
                 <!-- Collapsible wrapper -->
-               
+                <div style="padding-top:10px; position:absolute; top:10px; right:100px">
                     <!-- SignInMngr -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    @if (SignInMngr.IsSignedIn(User))
-                    {
-                          <li class="nav-item">
-                        <h3>User:@User.Identity.Name </h3>
-                        </li>
-                        <li class="nav-item">
-
-                        <form asp-controller="Auth" asp-action="LogOut" method="post"> <button class="btn btn-warning btn-lg" type="submit">Log out</button></form>
-                    </li>
-                    }
-                    else
-                    {  
-                        <li class="nav-item">
-
-                        <a asp-controller="Auth" asp-action="Index">  <button class="btn btn-primary btn-lg " >Log In</button> </a>
-                       </li>
-                        <li class="nav-item">
-                        <a asp-controller="Auth" asp-action="SignUp"> <button class="btn btn-primary btn-lg " >Sign Up</button></a>
-                        </li>
-
-                    }
-                </ul>
+                    <ul class="navbar-nav ms-auto mb-3 mb-lg-1">
+                        @if (SignInMngr.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <h3>Welcome @User.Identity.Name    </h3>
+                            </li>
+                            <li class="nav-item">
+                                <form asp-controller="Auth" asp-action="LogOut" method="post"> <button class="btn btn-warning btn-lg" type="submit">Log out</button></form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Auth" asp-action="Index">  <button class="btn btn-primary btn-lg ">Log In</button> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Auth" asp-action="SignUp"> <button class="btn btn-primary btn-lg ">Sign Up</button></a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
-                <!-- Right elements -->
-            </div>
-</nav>
-
+            <!-- Right elements -->
+        </div>
+    </nav>
     <div>
         @RenderBody()
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

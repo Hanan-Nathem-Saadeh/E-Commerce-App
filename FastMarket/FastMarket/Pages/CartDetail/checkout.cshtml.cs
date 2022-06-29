@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FastMarket.Models;
+using FastMarket.Models.DTO;
 using FastMarket.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,46 +50,64 @@ namespace FastMarket.Pages.CartDetail
 
 
         }
-        public async void OnPostAsync(Order order, string userId)
+        public async Task<ActionResult> OnPostAsync(Order order, string userId)
         {
             ListProduct = JsonConvert.DeserializeObject<List<Product>>
                       (HttpContext.Request.Cookies[$"ProductObject{userId}"]);
+            OrderDTO orderDTO = new OrderDTO()
+            {
 
-            ///add to database
-          // await _order.Create(order);
+                Address = order.Address,
+                Count = order.Count,
+                TotalPrice = order.TotalPrice,
+                datetime = DateTime.UtcNow,
+                UserID = order.UserID,
+                OrderListJSON = JsonConvert.SerializeObject(ListProduct)
+
+
+
+        };
+
+            ////// add to database
+            await _order.Create(orderDTO);
 
             ///send emails
-            //string message = "Summary of my purchase : \n";
-            //ListProduct = JsonConvert.DeserializeObject<List<Product>>
-            //        (HttpContext.Request.Cookies["ProductObject"]);
-            //if (ListProduct != null)
-            //{
-            //    foreach (Product product in ListProduct)
-            //    {
-            //        //  < img src = "@product.ImageUri" width = 100 />
-            //        message += $"Name :{product.Name} \n ";
-            //        message += $" Description : {product.Description} \n ";
-            //        message += $" Price : {product.Price} \n \n \n ";
-            //    }
-            //    message += $"this message for {toEmail} \n  Thanks To shopping from Fast Market... you are welcomed any time :)";
-            //}
-            //// warehouse  message
-            //await _email.SendEmail(message, "f.man.x99@gmail.com", "FastMarket Order");
-            //// sales department message
-            //await _email.SendEmail(message, "22029820@student.ltuc.com", "FastMarket Order");
-            //// User message
-            // await _email.SendEmail(message, toEmail, "FastMarket Order");
+            ///
+
+           string toEmail= _email.GetEmailAdress(order.UserID).Result;
+
+            string message = "Summary of my purchase : \n";
+            ListProduct = JsonConvert.DeserializeObject<List<Product>>(HttpContext.Request.Cookies[$"ProductObject{userId}"]);
+            if (ListProduct != null)
+            {
+                foreach (Product product in ListProduct)
+                {
+                    //  < img src = "@product.ImageUri" width = 100 />
+                    message += $"Name :{product.Name} \n ";
+                    message += $" Description : {product.Description} \n ";
+                    message += $" Price : {product.Price} \n \n \n ";
+                }
+                message += $"this message for {toEmail} \n  Thanks To shopping from Fast Market... you are welcomed any time :)";
+            }
+            // warehouse  message
+            await _email.SendEmailAsync(message, "f.man.x99@gmail.com", "FastMarket Order");
+            // sales department message
+            await _email.SendEmailAsync(message, "22029820@student.ltuc.com", "FastMarket Order");
+            // User message
+            await _email.SendEmailAsync(message, toEmail, "FastMarket Order");
 
 
             ///empty the cookie
             CookieOptions cookieOptions = new CookieOptions();
             cookieOptions.Expires = new System.DateTimeOffset(DateTime.Now.AddDays(7));
-            HttpContext.Response.Cookies.Append($"ProductObject{userId}", "", cookieOptions);
+            HttpContext.Response.Cookies.Delete($"ProductObject{userId}");
 
 
+            TempData["ThanksBuying"] = "Thanks for using fast market, the order will arrive soon";
+
+            return RedirectToPage("/CategPage/Index");
 
 
-            
 
         }
     }
